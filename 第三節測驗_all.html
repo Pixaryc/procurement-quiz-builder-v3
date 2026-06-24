@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>政府採購法 完整題庫 · 模擬測驗</title>
+<style>
+  :root{
+    --paper:#eceae1;
+    --card:#fffdf8;
+    --ink:#1d2630;
+    --ink-soft:#5d6772;
+    --ink-faint:#8b939c;
+    --line:#dcd8cc;
+    --line-soft:#e8e5db;
+    --seal:#b0392c;
+    --seal-deep:#8f2c22;
+    --correct:#2f7d57;
+    --correct-bg:#e7f1ea;
+    --wrong:#c8443a;
+    --wrong-bg:#f7e7e4;
+    --shadow:0 1px 2px rgba(29,38,48,.05), 0 8px 28px rgba(29,38,48,.07);
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei","Noto Sans TC","Heiti TC","Segoe UI",sans-serif;
+    --serif:"Songti TC","Source Han Serif TC","Noto Serif TC","Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  .wrap{max-width:740px;margin:0 auto;padding:24px 20px 64px}
+  @media(max-width:560px){ .wrap{padding:16px 14px 56px} }
+
+  /* ---------- masthead ---------- */
+  .masthead{display:flex;align-items:center;gap:16px;padding:6px 2px 22px}
+  .seal{
+    flex:none;width:52px;height:52px;border-radius:9px;background:var(--seal);
+    color:#fff;display:grid;place-items:center;font-family:var(--serif);
+    font-size:30px;font-weight:700;letter-spacing:.04em;transform:rotate(-4deg);
+    box-shadow:inset 0 0 0 2.5px rgba(255,255,255,.28), 0 4px 14px rgba(176,57,44,.28);
+  }
+  .seal::after{content:"";position:absolute}
+  .masthead h1{font-family:var(--serif);font-size:25px;font-weight:700;margin:0;letter-spacing:.06em}
+  .masthead p{margin:2px 0 0;color:var(--ink-soft);font-size:13.5px;letter-spacing:.08em}
+
+  /* ---------- card ---------- */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  .card-pad{padding:26px 26px}
+  @media(max-width:560px){ .card-pad{padding:20px 17px} }
+
+  /* ---------- start ---------- */
+  .lede{color:var(--ink-soft);font-size:15px;margin:0 0 22px}
+  .lede b{color:var(--ink);font-weight:600}
+  .compo{border-top:1px solid var(--line-soft)}
+  .compo-row{display:flex;align-items:baseline;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line-soft)}
+  .compo-no{flex:none;font-family:var(--serif);font-size:14px;color:var(--seal);font-weight:700;width:42px}
+  .compo-name{flex:1;font-size:15.5px}
+  .compo-dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px);min-width:14px}
+  .compo-q{flex:none;color:var(--ink-soft);font-size:14px}
+  .compo-q b{color:var(--ink);font-size:19px;font-family:var(--serif);font-weight:700;margin-right:2px}
+  .compo-total{display:flex;justify-content:space-between;align-items:baseline;padding:16px 2px 2px;font-size:14px;color:var(--ink-soft)}
+  .compo-total .big{font-family:var(--serif);font-size:30px;color:var(--ink);font-weight:700}
+
+  .opt-toggle{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:22px 0 4px;
+    padding:14px 16px;background:#f6f4ec;border:1px solid var(--line-soft);border-radius:12px}
+  .opt-toggle .t-text{font-size:14.5px}
+  .opt-toggle .t-sub{display:block;color:var(--ink-faint);font-size:12.5px;margin-top:1px;letter-spacing:.02em}
+  .switch{flex:none;position:relative;width:46px;height:27px;cursor:pointer}
+  .switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+  .slider{position:absolute;inset:0;background:#cfcabd;border-radius:99px;transition:.18s}
+  .slider::before{content:"";position:absolute;left:3px;top:3px;width:21px;height:21px;background:#fff;border-radius:50%;
+    transition:.18s;box-shadow:0 1px 3px rgba(0,0,0,.22)}
+  .switch input:checked + .slider{background:var(--seal)}
+  .switch input:checked + .slider::before{transform:translateX(19px)}
+  .switch input:focus-visible + .slider{outline:2px solid var(--ink);outline-offset:2px}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);
+    font-size:16px;font-weight:600;letter-spacing:.06em;border:none;border-radius:12px;cursor:pointer;
+    padding:15px 22px;transition:transform .08s,background .15s,box-shadow .15s}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+  .btn-primary{background:var(--seal);color:#fff;box-shadow:0 4px 14px rgba(176,57,44,.26)}
+  .btn-primary:hover{background:var(--seal-deep)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{background:#f4f2ea;border-color:var(--ink-faint)}
+  .btn-block{width:100%;margin-top:24px}
+  .btn-row{display:flex;gap:12px;margin-top:24px}
+  .btn-row .btn{flex:1}
+
+  /* ---------- quiz top ---------- */
+  .qtop{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 14px}
+  .qtop .count{font-size:14px;color:var(--ink-soft);letter-spacing:.04em}
+  .qtop .count b{font-family:var(--serif);font-size:21px;color:var(--ink);font-weight:700}
+  .qtop .quit{font-size:13px;color:var(--ink-faint);background:none;border:none;cursor:pointer;padding:6px;letter-spacing:.05em}
+  .qtop .quit:hover{color:var(--seal)}
+  .qtop .quit:focus-visible{outline:2px solid var(--ink);outline-offset:1px;border-radius:6px}
+  .bar{height:6px;background:#dedacd;border-radius:99px;overflow:hidden;margin:0 2px 22px}
+  .bar > i{display:block;height:100%;background:var(--seal);border-radius:99px;transition:width .3s ease}
+
+  /* ---------- question ---------- */
+  .qhead{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .qbadge{font-family:var(--serif);font-size:13px;font-weight:700;color:#fff;background:var(--ink);
+    padding:3px 11px;border-radius:7px;letter-spacing:.06em}
+  .qtag{font-size:12.5px;color:var(--seal);background:#f7e9e7;padding:3px 10px;border-radius:7px;
+    letter-spacing:.04em;border:1px solid #efd6d2}
+  .qref{margin-left:auto;font-size:12px;color:var(--ink-faint);letter-spacing:.03em}
+  .stem{font-size:18px;line-height:1.78;padding:2px 0 4px 16px;border-left:3px solid var(--seal);margin:0 0 22px}
+  @media(max-width:560px){ .stem{font-size:16.5px} }
+
+  .opts{display:flex;flex-direction:column;gap:11px}
+  .opt{display:flex;align-items:flex-start;gap:13px;width:100%;text-align:left;cursor:pointer;
+    background:var(--card);border:1.5px solid var(--line);border-radius:13px;padding:14px 16px;
+    font-family:var(--sans);font-size:16px;line-height:1.62;color:var(--ink);transition:border-color .14s,background .14s}
+  @media(max-width:560px){ .opt{font-size:15.5px;padding:13px 14px} }
+  .opt:hover:not(:disabled){border-color:var(--ink-faint);background:#faf8f1}
+  .opt:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+  .opt:disabled{cursor:default}
+  .opt .mk{flex:none;width:27px;height:27px;border-radius:50%;border:1.6px solid var(--line);
+    display:grid;place-items:center;font-family:var(--serif);font-size:14px;font-weight:700;color:var(--ink-soft);
+    transition:.14s;margin-top:1px}
+  .opt .tx{flex:1;padding-top:1px}
+
+  .opt.is-chosen-correct{border-color:var(--correct);background:var(--correct-bg)}
+  .opt.is-chosen-correct .mk{background:var(--correct);border-color:var(--correct);color:#fff}
+  .opt.is-chosen-wrong{border-color:var(--wrong);background:var(--wrong-bg)}
+  .opt.is-chosen-wrong .mk{background:var(--wrong);border-color:var(--wrong);color:#fff}
+  .opt.is-answer{border-color:var(--wrong);background:#fff;box-shadow:inset 0 0 0 1px var(--wrong)}
+  .opt.is-answer .mk{background:var(--wrong);border-color:var(--wrong);color:#fff}
+  .opt.is-dim{opacity:.5}
+  .opt .ans-flag{flex:none;align-self:center;font-size:12px;font-weight:700;color:var(--wrong);
+    letter-spacing:.08em;border:1px solid var(--wrong);border-radius:6px;padding:2px 7px}
+
+  .verdict{display:flex;align-items:center;gap:9px;margin-top:20px;font-size:15px;font-weight:600;letter-spacing:.04em}
+  .verdict.ok{color:var(--correct)}
+  .verdict.no{color:var(--wrong)}
+  .verdict .dot{font-size:18px}
+
+  /* ---------- report ---------- */
+  .score{display:flex;align-items:center;gap:22px;padding:6px 4px 24px}
+  .ring{flex:none;width:108px;height:108px}
+  .score-meta .pct{font-family:var(--serif);font-size:40px;font-weight:700;line-height:1}
+  .score-meta .frac{color:var(--ink-soft);font-size:15px;margin-top:7px;letter-spacing:.04em}
+  .score-meta .frac b{color:var(--ink);font-weight:600}
+  .verdict-line{font-size:15px;margin:0 4px 4px;color:var(--ink-soft)}
+  .verdict-line b{color:var(--ink)}
+
+  .sec-title{font-family:var(--serif);font-size:15px;font-weight:700;letter-spacing:.1em;color:var(--ink);
+    margin:26px 4px 12px;display:flex;align-items:center;gap:9px}
+  .sec-title::before{content:"";width:14px;height:2px;background:var(--seal)}
+  .codes{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+  .code{font-family:"SFMono-Regular",ui-monospace,"Menlo",monospace;font-size:13px;letter-spacing:.02em;
+    background:#f7e9e7;color:var(--seal-deep);border:1px solid #eed4cf;border-radius:8px;padding:6px 11px;white-space:nowrap}
+  .copy-row{display:flex;align-items:center;gap:12px;margin-top:12px}
+  .btn-copy{font-size:13px;font-weight:600;letter-spacing:.05em;color:var(--ink);background:#f4f2ea;
+    border:1px solid var(--line);border-radius:9px;padding:9px 15px;cursor:pointer}
+  .btn-copy:hover{border-color:var(--ink-faint)}
+  .btn-copy:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .copy-hint{font-size:12.5px;color:var(--ink-faint)}
+
+  .allright{text-align:center;padding:10px 0 6px}
+  .allright .big{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--correct);letter-spacing:.05em}
+  .allright .sub{color:var(--ink-soft);font-size:14px;margin-top:6px}
+
+  details.review{border:1px solid var(--line);border-radius:13px;margin-top:12px;overflow:hidden;background:var(--card)}
+  details.review > summary{list-style:none;cursor:pointer;padding:15px 17px;font-size:14.5px;font-weight:600;
+    letter-spacing:.05em;display:flex;align-items:center;justify-content:space-between;color:var(--ink)}
+  details.review > summary::-webkit-details-marker{display:none}
+  details.review > summary .chev{transition:transform .2s;color:var(--ink-faint);font-size:13px}
+  details.review[open] > summary .chev{transform:rotate(90deg)}
+  details.review > summary:hover{background:#faf8f1}
+  .rev-body{padding:2px 17px 8px;border-top:1px solid var(--line-soft)}
+  .rev-item{padding:16px 0;border-bottom:1px dashed var(--line-soft)}
+  .rev-item:last-child{border-bottom:none}
+  .rev-code{font-family:ui-monospace,monospace;font-size:12px;color:var(--seal-deep);letter-spacing:.02em;margin-bottom:6px}
+  .rev-q{font-size:15.5px;line-height:1.7;margin:0 0 11px}
+  .rev-opt{display:flex;gap:9px;font-size:14px;line-height:1.6;padding:5px 0;color:var(--ink-soft)}
+  .rev-opt .lab{flex:none;font-weight:700;font-family:var(--serif)}
+  .rev-opt.r-correct{color:var(--correct);font-weight:500}
+  .rev-opt.r-wrong{color:var(--wrong)}
+  .rev-opt .pill{flex:none;font-size:11px;font-weight:700;border-radius:5px;padding:1px 6px;align-self:center;letter-spacing:.06em}
+  .rev-opt.r-correct .pill{background:var(--correct-bg);color:var(--correct)}
+  .rev-opt.r-wrong .pill{background:var(--wrong-bg);color:var(--wrong)}
+
+  .foot{text-align:center;color:var(--ink-faint);font-size:11.5px;letter-spacing:.06em;margin-top:30px;line-height:1.7}
+
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="masthead">
+      <div class="seal">測</div>
+      <div>
+        <h1>政府採購法 完整題庫</h1>
+        <p>完整題庫練習 · 選項隨機重排</p>
+      </div>
+    </div>
+    <div id="app"></div>
+    <div class="foot">題庫共 <span id="bank-total">0</span> 題 · 完整顯示全部題目<br>資料產生日期 115/06/20 · 僅供個人練習使用</div>
+  </div>
+
+<script>
+const CHAPTERS = [{"no":"2","name":"採購契約","count":33},{"no":"3","name":"投標須知及招標文件製作","count":35},{"no":"6","name":"道德規範及違法處置","count":21},{"no":"7","name":"爭議處理","count":45},{"no":"12","name":"底價及價格分析","count":44},{"no":"13","name":"錯誤採購態樣","count":109}];
+const QUESTIONS = [{"chapter":"12","chapterName":"底價及價格分析","num":1,"stem":"採固定價格評選優勝廠商，為避免廠商產生超額利潤並維護招標機關權益，下列何者應納入評分項目？","options":["價格。","標的之功能、效益。","品質的可靠度。","廠商提出與採購標的相關之創意事項。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":2,"stem":"機關辦理採購，下列何者正確？","options":["公告金額以上未達查核金額之財物採購，因緊急情事需決標時，經原底價核定人或其授權人員核准可超底價5％以內決標。","開標結果之最低報價廠商未進入底價，優先減價時填列「不再減價」時，不得再予最低報價廠商第1次比減價之機會。","比減價過程，比減價廠商有2家分別填列「願按底價承製」、「願按底價減新臺幣100元承製」，應宣布以「願按底價減新臺幣100元承製」之廠商決標。","以上皆非。"],"answer":1},{"chapter":"12","chapterName":"底價及價格分析","num":3,"stem":"機關辦公傢俱招標案，依採購法規定採最低標決標，最低標廠商標價為新臺幣(下同)410萬元，低於底價600萬元，機關認為廠商提出之說明尚非完全合理，關於差額保證金之通知，下列何者正確？","options":["不通知該廠商提出。","通知該廠商繳納10萬元。","通知該廠商繳納70萬元。","通知該廠商繳納190萬元。"],"answer":1},{"chapter":"12","chapterName":"底價及價格分析","num":4,"stem":"機關辦理最低標決標案件，開標後最低標廠商之標價未進入底價，最低標廠商當場表示放棄優先減價，則該廠商得否參與後續比減價？","options":["不得。","得。","經其他廠商同意後仍得。","視為放棄。"],"answer":2},{"chapter":"12","chapterName":"底價及價格分析","num":5,"stem":"依採購法，下列何者有誤？","options":["訂定底價確有困難之特殊或複雜案件，得不訂底價。但應於招標文件內敘明理由及決標條件與原則。","最有利標決標之案件，可將履約期程之長短訂為評選項目。","適用最有利標決標之案件，評分最高之廠商有優先減價之權利。","不訂底價以最有利標決標之採購，得規定廠商於投標文件內詳列報價內容。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":6,"stem":"下列敘述何者錯誤？","options":["採單價決標者，依預估採購所需金額認定採購金額。","預計金額小於或等於預算金額。","預計金額為該採購之預估決標金額，其性質類似底價，應由機關首長或其授權人員核定後公告。","預算案尚未經立法程序，亦得附條件先行辦理招標。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":7,"stem":"未訂底價之採購，評審委員會所提出建議之金額，下列敘述何者正確？","options":["屬開標前訂定建議之金額。","標價合理者，評審委員會得不提出建議之金額。","審查資格後由評審委員會提出建議之金額。","機關有緊急需求時，得超建議之金額決標。"],"answer":2},{"chapter":"12","chapterName":"底價及價格分析","num":8,"stem":"依採購法，下列何者有誤？","options":["不是所有工程都須於決標日起30日內依規定格式傳輸至工程價格資料庫。","採購法第11條第2項所稱一定金額，為新臺幣1,000萬元。","工程價格資料庫係供各機關採購預算編列及底價訂定之參考。","工程價格資料庫，除應秘密之部分外，得有償提供廠商。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":9,"stem":"機關依採購法第11條第2項規定傳輸之資料，下列何者有誤？","options":["其屬統包者，為得標廠商完成細部設計後，經機關核定之單價。","其內容包括得標廠商之契約單價及經機關核定之預算單價。","機關應於決標日起20日內，將資料製作成公共工程電腦估價系統格式電子檔，並透過政府電子採購網站傳輸至工程價格資料庫。","傳輸資料應依主管機關訂定之「公共工程施工綱要規範細目碼編訂原則」編訂。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":10,"stem":"下列何者錯誤？","options":["除限制性招標議價外，底價係未見廠商報價前預估成本及競爭等情形所訂定決標之底限。","最有利標於評選時參考廠商提出之報價內容進行分析評分或評比。","底價應依圖說、規範、契約並考量成本、市場行情及政府機關決標資料逐項編列。","為提升議價效率，機關得於廠商議價過程中建議廠商減至底價。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":11,"stem":"招標機關辦理採購，以最有利標決標，故不訂底價，下列何種敘述為不正確？","options":["未違反採購法第47條之規定。","規定廠商於投標文件中詳列報價內容。","招標文件無需載明評選項目。","得依招標文件規定採行協商措施以便洽廠商更改投標文件內容。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":12,"stem":"依採購法，下列何者有誤？","options":["機關於第1次比減價格前，應宣布最低標廠商減價結果。","最低標廠商優先減價時得書面表示減至底價。","第2次以後比減價格前，應宣布前一次比減價格之最低標價。","機關得限制廠商比減價格之次數為2次。"],"answer":2},{"chapter":"12","chapterName":"底價及價格分析","num":13,"stem":"機關辦理採購，招標文件規定廠商之標價依規定之計算方式，有依投標標的之性能、耐用年限、保固期、能源使用效能或維修費用等之差異，就標價予以加價或減價以定標價之高低序位者，以加價或減價後之標價決定最低標者，係屬下列何種決標原則？","options":["最有利標。","參考最有利標精神。","最低標。","準用最有利標。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":14,"stem":"有關底價單之保管，下列何者為非？","options":["開標前訂有底價者，主持開標人員及監辦開標人員應查察底價有無密封。","審標結果有廠商符合招標文件規定，而需進行比較廠商標價是否在底價以內之程序時，方開啟底價封。","開啟底價封後，查察實際核定之底價金額。","開啟底價封後未能當場決標者，會議主持人將底價單重行置入底價封即可，無需密封。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":15,"stem":"機關以公開招標及最有利標方式辦理訂有底價之採購，最有利標廠商報價超過底價而須洽減時，以下何者敘述最正確？","options":["議價時洽減。","評選時洽減。","協商時洽減。","以上皆非。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":16,"stem":"依採購法，下列何者有誤？","options":["依採購法第22條第1項第9款評選2家以上優勝廠商，其與各該廠商議價之底價不一樣。","依採購法第49條採公開取得3家以上廠商之書面報價者，其底價應於開標前定之。","依採購法第22條第1項第9款與優勝廠商議價，訂定底價前應先參考該廠商之報價。","依採購法辦理公開招標，其採第56條評選最有利標者，得不訂定底價。"],"answer":2},{"chapter":"12","chapterName":"底價及價格分析","num":17,"stem":"依採購法，下列何者有誤？","options":["部分標價有對應之底價項目可供比較，該部分標價低於相同部分項目底價之80%者，得認定為部分標價偏低。","廠商之部分標價低於其他機關最近辦理相同採購決標價之70%者，得認定為部分標價偏低。","廠商之部分標價經評審或評選委員會認為偏低者，得認定為部分標價偏低。","廠商之部分標價低於可供參考之一般價格之70%者，得認定為部分標價偏低。"],"answer":1},{"chapter":"12","chapterName":"底價及價格分析","num":18,"stem":"機關辦理訂有底價之採購，關於底價之訂定，下列何者有誤？","options":["應參考圖說、規範、契約，並考量成本、市場行情及政府機關決標資料。","規劃、設計、需求或使用單位提出預估金額及其分析後由承辦採購單位簽報。","機關首長或其授權人員核定。","開標後可參考廠商標價更改底價。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":19,"stem":"底價及價格分析中，下列何者正確？","options":["採最有利標之招標文件未訂明固定費用或費率，而由廠商於投標文件載明標價者，應規定廠商於投標文件內詳列報價內容，並納入評選。","未訂定底價之採購，除小額採購外，應成立評審委員會。","標價合理者，評審委員會得不提出建議之金額。","以上皆是。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":20,"stem":"不訂底價之採購，其審查投標廠商之標價？","options":["不分金額均應成立評審委員會。","應成立評選委員會。","應成立稽核委員會。","除小額採購外，應成立評審委員會。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":21,"stem":"依採購法，除採最高標決標者外，下列何者有誤？","options":["底價得高於預算金額。","決標紀錄載明底價金額。","機關訂定底價，基於履約地差異，訂定不同之底價。","機關訂定底價，基於評分差異，訂定不同之底價。"],"answer":1},{"chapter":"12","chapterName":"底價及價格分析","num":22,"stem":"依政府採購法，下列何者有誤？","options":["機關訂定底價，由需求單位提出預估金額及其分析後，由承辦採購單位簽報機關首長或其授權人員核定。","機關訂定底價，未達公告金額之採購，由承辦採購單位逕行簽報核定。","機關訂定底價，公告金額以上之重複性採購，由承辦採購單位逕行簽報核定。","機關訂定底價，一律由承辦採購單位簽報機關首長或其授權人員核定。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":23,"stem":"選擇性招標底價之訂定應於何時定之？","options":["資格審查之開標前定之。","議價前定之。","資格審查後之下一階段開標前定之。","於比價前定之。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":24,"stem":"以最有利標決標者，得將價格納入評選項目，下列何項次非屬評選價格之子項？","options":["品質。","價格組成之完整性。","折讓。","履約成本控制方式。"],"answer":1},{"chapter":"12","chapterName":"底價及價格分析","num":25,"stem":"適用最有利標標價之決定，得於評選時就廠商之報價內容，進行何程序？","options":["分析評分及比價。","分析評分及議價。","分析評分或評比。","議價或比價。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":26,"stem":"總標價偏低之情形，何者錯誤？","options":["訂有底價之採購，廠商之總標價低於底價之85％者。","未訂底價之採購，廠商之總標價經評審或評選委員會認為偏低者。","未訂底價且未設置評審委員會或評選委員會之採購，廠商之總標價低於預算金額或預估需用金額之70％者。","訂有底價之採購，廠商之總標價低於底價之80％者。"],"answer":1},{"chapter":"12","chapterName":"底價及價格分析","num":27,"stem":"下列何者錯誤？","options":["評審委員會，機關得以採購法第94條成立之評選委員會代之。","最有利標決標者，以不訂底價為原則；其訂有底價，而廠商報價逾底價須減價者，於採行協商措施時洽減之。","查核金額以上之採購，最低標標價超過底價4％且未逾預算金額者，應先報經上級機關核准後決標。","評審委員會，其成員由機關首長或其授權人員就對於採購標的之「規格」具有專門知識之機關職員或公正人士派兼或聘兼之。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":28,"stem":"下列何者正確？","options":["採總標價決標者，決標前僅就總標價之高低認定是否接受，不及於其所組成之單價。","機關訂定底價，不得訂定不同之底價。","招標文件得預先載明契約金額或相關費率作為決標條件。","超底價廢標後，重新招標時不得調整底價。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":29,"stem":"下列何者錯誤？","options":["機關辦理減價或比減價格結果在底價以內時，除有採購法第58條總標價或部分標價偏低之情形者外，應即宣布決標。","最低合格標報價超過底價時，洽最低標廠商減價1次；減價結果仍超過底價時，由所有合於招標文件規定之投標廠商重新比減價格，比減價格不得逾3次。","最低標價仍超過底價8%者，報上級機關同意始可宣布決標。","機關訂定底價，得基於技術、品質、功能、履約地、商業條款、評分或使用效益等差異，訂定不同之底價。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":30,"stem":"限制性招標之議價，訂定底價前？","options":["自行依據經驗辦理。","得先參考廠商之報價或估價單。","應先參考廠商之報價或估價單。","應先試洽廠商減價。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":31,"stem":"限制性招標比價，底價之訂定時機為？","options":["辦理比價之開標前。","辦理比價前。","訂底價前應先參考廠商之報價或估價單。","以上皆是。"],"answer":1},{"chapter":"12","chapterName":"底價及價格分析","num":32,"stem":"依採購法，下列何者有誤？","options":["未能減至機關所宣布之最低標優先減價結果者，機關不通知其參加下一次之比減價格。","未能減至機關所宣布之第1次比減價格之最低標價者，機關不通知其參加第2次之比減價格。","超底價決標者，決標紀錄記載超底價之金額、比率及必須決標之緊急情事。","查核金額以上之採購，上級機關派員監辦人員不得當場予以核准超底價決標。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":33,"stem":"依採購法，下列何者有誤？","options":["機關辦理減價或比減價格結果在底價以內時，除有採購法第58條總標價或部分標價偏低之情形者外，應即宣布決標。","廠商減價或比減價格結果在底價以內之情形，包括平底價之情形。","廠商標價與底價相同時仍應洽減價。","洽廠商減價時不得公開底價。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":34,"stem":"依採購法，下列何者有誤？","options":["訂有底價之採購，廠商之總標價低於底價80%者，得認定為總標價偏低。","未訂底價之採購，廠商之總標價經評審委員會認為偏低者，得認定為總標價偏低。","未訂底價且未設置評審委員會或評選委員會之採購，廠商之總標價低於預算金額之80%者，得認定為總標價偏低。","未訂底價且未設置評審委員會或評選委員會之採購，預算案尚未經立法程序者，廠商之總標價低於預估需用金額之70%者，得認定為總標價偏低。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":35,"stem":"依採購法，下列何者有誤？","options":["訂定底價確有困難之特殊或複雜案件得不訂底價。","以最有利標決標之採購得不訂底價。","小額採購得不訂底價。","不訂底價應報上級機關核准。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":36,"stem":"依採購法，下列何者有誤？","options":["選擇性招標之底價應於資格審查後之下一階段開標前定之。","公開招標採分段開標者，其底價至遲應於第2階段價格標開標前定之。","限制性招標之比價，其底價應於辦理比價之開標前定之。","限制性招標之議價，訂定底價前應先參考廠商之報價或估價單。"],"answer":2},{"chapter":"12","chapterName":"底價及價格分析","num":37,"stem":"機關採準用最有利標辦理評選優勝廠商，下列何者為非？","options":["如採訂定底價者，底價得於開標前由採購評選委員會訂定之。","廠商標價合理者，可考慮照價訂底價，照價決標。","廠商之報價應納入評選考量。","如採訂定底價者，對於不同優勝序位之廠商，應訂定不同之底價。"],"answer":1},{"chapter":"12","chapterName":"底價及價格分析","num":38,"stem":"廢標後重行招標，有關底價之訂定，下列何者不適法？","options":["如原訂底價尚在保密之中，是否重訂底價，由機關首長或其授權人員決定。","如原訂底價尚在保密之中，是否重訂底價，由開標主持人決定。","如招標之圖說、規範、契約、成本、市場行情等有所改變，應重行訂定底價。","以上皆非。"],"answer":2},{"chapter":"12","chapterName":"底價及價格分析","num":39,"stem":"機關辦理公開客觀評選優勝廠商，採不分段開標方式，有關廠商價格標之開啟時機，下列敘述何者正確？","options":["議價時開啟。","評選後議價前開啟。","召開評選會議時開啟。","依招標文件所定開標時間開啟。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":40,"stem":"一般採購案(即無特殊情形者)，其底價應於何時公開？","options":["開標後。","決標後。","廢標後。","流標後。"],"answer":2},{"chapter":"12","chapterName":"底價及價格分析","num":41,"stem":"以下何者訂定底價前應參考廠商報價(新臺幣，下同)？","options":["300萬元工程採購之第2次公開招標。","500萬元工程採購之第1次公開招標。","200萬元財物採購之限制性招標洽原得標廠商後續擴充採購。","300萬元財物採購之第1次選擇性招標。"],"answer":3},{"chapter":"12","chapterName":"底價及價格分析","num":42,"stem":"下述有關底價之敘述，何者正確？","options":["公開招標採分段開標者，底價應於價格標開標前定之。","開標後發現底價訂定有誤，得重訂底價。","標價偏低情形，廠商表示願繳納差額保證金時，機關得告知廠商底價金額。","預先於招標文件公告底價。"],"answer":4},{"chapter":"12","chapterName":"底價及價格分析","num":43,"stem":"下列敘述何者正確？","options":["機關採未訂底價之最低標辦理採購且設有評審委員會者，應先審查合於招標文件規定之最低標價後，對標價合理者，評審委員會得不提出建議金額。","第1次公開招標未達3家流標後重新招標，底價不得重訂。","第1次公開招標超底價廢標後重新招標，重訂底價時不得調高。","查核金額以上之底價報上級機關核准。"],"answer":1},{"chapter":"12","chapterName":"底價及價格分析","num":44,"stem":"機關依「中央機關未達公告金額採購招標辦法」第2條第3項規定，於公告或招標文件中訂明開標時間地點，並於開標後當場審查，逕行辦理決標，下列敘述何者錯誤？","options":["第1次開標前，訂定底價時應先參考廠商之報價或估價單。","如已先簽准改採限制性招標之議價者，訂定底價時應先參考廠商之報價。","機關得選擇不刊登政府採購公報。","履約地點位於原住民族地區者，應符合原住民族工作權保障法之規定。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":1,"stem":"下列何者屬巨額工程採購之應辦事項？","options":["應採行統包方式辦理。","成立採購工作及審查小組。","訂定投標廠商之特定資格。","允許共同投標。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":2,"stem":"下列何種屬「投標廠商資格與特殊或巨額採購認定標準」第5條第1項第5款所稱國際或國家品質管理之驗證文件？","options":["公共工程金質獎證書。","CNS15013(醫療器材品質管理系統)。","食品GMP認證。","CAS(台灣優良農產品)驗證證書。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":3,"stem":"機關以公開招標搭配採購法第56條規定之最有利標決標方式辦理採購，下列敘述何者錯誤？","options":["不論採購金額大小，均應先報經上級機關核准。","採購標的包括工程、財物或勞務。","議價程序不得免除。","應成立採購評選委員會。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":4,"stem":"下列何者非屬巨額財物採購之應辦事項？","options":["招標前簽准預期使用情形。","成立採購工作及審查小組。","報上級機關派員監辦。","訂定投標廠商之特定資格前，評估可能符合特定資格之廠商家數。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":5,"stem":"下列何者可能有圍標之嫌，於開標時宜注意之？","options":["同一人代表2家公司出席開標。","不同投標廠商之領標網路位址(IP)相同。","不同投標廠商所繳納之押標金，疑似由同一人出具。","以上皆是。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":6,"stem":"下列有關採購實務之規定，何者為非？","options":["廠商如因市場發生缺貨或停產之情形，擬以等級高於原契約型錄之產品交貨，尚無不可。","廠商因查驗或驗收不合格，遭機關部分解除或部分終止契約，情節非重大者，仍有採購法第101條第1項第8款之適用。","自然人得標後，不得以該個人獨資之工作室變更簽約主體。","投標文件內容於投標前經塗改，並由廠商代表人於塗改處蓋章或簽名者，仍屬有效。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":7,"stem":"機關依採購法第22條第1項第11款辦理經公開徵求之限制性招標，下列敘述何者錯誤？","options":["不得以正進行建造中，且尚未取得使用執照及權利書狀之房地，為採購徵選之標的。","辦理採購前應先編擬計畫依規定層報核定。","簽辦文件應敘明採購房地產及指定地區採購之理由及其必要性。","無須將公開徵求房地產之公告刊登於政府採購公報並公開於資訊網路。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":8,"stem":"採購法第22條第1項第4款所稱「原供應廠商」，下列何者非屬「原供應廠商」之範圍？","options":["原訂約廠商之關係企業。","原製造廠商。","原訂約廠商之分包廠商。","原訂約廠商。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":9,"stem":"有關技術規格之敘述，何者為正確？","options":["機關所擬定、採用或適用之技術規格，其在目的或效果上有無限制競爭，應以符合該規格之廠商家數多寡作為判斷依據。","機關已於招標文件精確描述技術規格，可一併列出參考廠牌，以方便投標廠商詢價。","採購法第26條第1項至第3項規定技術規格之訂定順序，即機關應優先依同條第1項規定，訂定符合機關需求之技術規格；無法依第1項規定訂定技術規格時，再依序依第2項、第3項規定辦理。","機關依採購法第11條之1規定成立採購工作及審查小組，其任務不包括確認招標文件所訂技術規格是否為「機關所必須」之需求。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":10,"stem":"機關採選擇性招標建立合格廠商名單方式辦理採購，其預先辦理廠商資格審查，名單有效期為2年，每年預估採購總額為新臺幣(下同)200萬元。今利用該名單邀請符合資格廠商參加80萬元投標，本次採購之採購金額應認定為？","options":["80萬元。","200萬元。","400萬元。","480萬元。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":11,"stem":"機關辦理評分及格最低標採購，下列敘述何者錯誤？","options":["採分段開標。","公開招標於開標後參考審查合格廠商之標價訂定底價。","不得於招標文件規定，已達及格分數之廠商尚須過半數審查委員會委員評定方開啟其價格標。","雖採評分審查方式，本質上仍屬最低標。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":12,"stem":"機關辦理小額採購，下列敘述何者正確？","options":["其驗收，仍適用採購法之監辦規定。","不得未經公告程序，逕洽廠商辦理採購。","均無須簽訂契約。","不得採公開招標辦理。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":13,"stem":"下列何者非屬政府採購錯誤行為態樣之一？","options":["規定決標後樣品檢驗不合格不發還押標金。","議價案於議價前參考廠商之報價或估價單訂底價。","使用主管機關之招標投標簽約三用格式，廠商決標後須至機關簽約。","決定最有利標後再洽廠商減價。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":14,"stem":"下列敘述何者為是？","options":["財物採購之招標文件，不得比照工程採購案件辦理公開閱覽。","招標文件之售價逾新臺幣1,000元者，即有違反法令規定之虞。","機關提供標封供廠商使用，但不限定廠商未使用即為不合格標或無效標，尚非不可。","總價承攬契約，不論數量不符或漏項均應由廠商吸收。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":15,"stem":"依採購法規定，下列敘述何者正確？","options":["廠商以未載明受款人之銀行支票繳納押標金者，機關得拒絕接受。","開標後發現廠商繳納之押標金額度不足者，得允許補繳差額。","採公開招標辦理者，得於招標文件規定廠商1次投標，但就資格、規格、價格分段開標。","工程驗收時，為考量驗收效率，可由廠商自行點選取樣。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":16,"stem":"機關辦理公開招標，公告金額以上未達查核金額之採購，其等標期(未提供電子領投標及公開閱覽)不得少於幾日？","options":["5日。","7日。","14日。","21日。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":17,"stem":"採購金額新臺幣80萬元之案件以公開取得3家以上報價單，擇符合需要者方式辦理，若無電子領標投標，其等標期最少應有幾天？","options":["5天。","7天。","14天。","3天。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":18,"stem":"依採購法令規定，下列敘述何者正確？","options":["訂定廠商特定資格時，得規定具有相當設備者。","訂定廠商資格時，得規定廠商投標當時即必須於指定地區設有分公司或維護站。","對於任何產品，機關均得於招標文件規定廠商都要檢附型錄。","廠商出席開標人員應攜帶廠商大小章。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":19,"stem":"公開招標有關規格訂定，下列何者正確？","options":["廠商所提供之型錄，應逐頁加蓋廠商及負責人章。","公告金額以上採購，得指定進口品。","未達公告金額之採購，不適用採購法第26條規定。","不得在招標文件註明「同等品」字樣。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":20,"stem":"下列關於規格之敘述，何者不正確？","options":["若規定正字標記，應允許同等品競標。","美國之標準為大多數廠商所遵循，故不必規定允許同等品。","型錄係佐證廠商所報規格，不一定須為正本。","公告金額以上之採購，不得指定須為進口品。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":21,"stem":"下列關於技術規格之規定，何者係屬採購錯誤行為？","options":["機關辦理公告金額以上之採購，應依功能或效益訂定招標文件。其有國際標準或國家標準者，應從其規定。","招標文件允許投標廠商提出同等品者，機關於招標文件中規定廠商應於投標文件內預先提出以供審查，並無違反採購法規定。","機關於招標文件要求特定之商名，並註明「或同等品」字樣者，即不違採購法。","採購法第26條第3項所稱同等品，指經機關審查認定，其功能、效益、標準或特性不低於招標文件所要求或提及者。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":22,"stem":"下列何者非屬規格限制競爭的情形？","options":["型錄須為正本。","以ISO9001驗證證書作為產品規範。","型錄須蓋代理廠商之章。","公告金額以上之採購無法精確說明招標要求而列出特定廠牌，同時允許提出同等品供審查。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":23,"stem":"某國立大學採統包方式辦理校門口意象及綠美化工程採購，採購金額為新臺幣98萬元，下列何者不是得採行之招標方式？","options":["公開取得企劃書。","依採購法第22條第1項第9款辦理公開評選。","公開招標。","依中央機關未達公告金額採購招標辦法第2條第1項第2款辦理限制性招標。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":24,"stem":"選擇性招標之開標，下列何者不是選擇性招標之資格審查，供建立合格廠商名單後續邀標得採行的方式？","options":["個別邀請所有符合資格之廠商投標。","公告邀請所有符合資格之廠商投標。","由使用單位自符合資格之廠商名單中自行擇定邀請廠商投標。","以抽籤方式擇定邀請符合資格之廠商投標。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":25,"stem":"機關為特定個案辦理選擇性招標，有關邀請符合資格廠商投標之邀請方式，下列敘述何者正確？","options":["依辦理廠商資格審查文件所標示之邀請順序，依序邀請符合資格之廠商投標。","以抽籤方式擇定邀請符合資格之廠商投標。","於辦理廠商資格審查後，邀請所有符合資格之廠商投標。","以上皆非。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":26,"stem":"依採購法規定，下列敘述何者正確？","options":["機關辦理公告金額以上之限制性招標須報上級機關核准。","招標文件中公告底價須報上級機關核准。","未達公告金額以取最有利標精神擇符合需要廠商辦理議價者須報上級機關核准。","預算案尚未經立法程序，得附條件先行辦理招標。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":27,"stem":"依採購法規定，下列何者須報上級機關核准？","options":["機關辦理公告金額以上之選擇性招標。","招標文件中公告底價。","工程案採最有利標決標。","機關辦理公告金額以上之限制性招標公開評選優勝廠商。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":28,"stem":"未達公告金額而逾公告金額十分之一案件，不能以下列哪一種方式辦理？","options":["公開招標。","公開取得3家以上廠商之書面報價。","簽經機關首長核准後，採限制性招標。","不經公告程序逕洽廠商採購。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":29,"stem":"下列何者非採購法之監辦時機？","options":["開標。","比價。","查驗。","驗收。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":30,"stem":"下列何者不會有違反採購法第6條第1項規定之虞？","options":["預算新臺幣50萬元之採購，以公開徵求廠商提供報價單及指定廠牌方式辦理決標。","不適用我國締結之條約、協定之採購，僅允許我國廠商投標。","規定投標廠商須為製造廠之代理商。","規定投標廠商須於招標機關之所在地轄區有實際工作經驗。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":31,"stem":"下列何者正確？","options":["標價偏低，未經分析逕行決標。","標價偏低，未通知廠商說明即逕通知繳納差額保證金。","標價偏低，未繳納差額保證金前即決標而於決標後通知繳納差額保證金。","機關經檢討標價偏低之最低標廠商標價後，認無顯不合理，無降低品質、不能誠信履約之虞或其他特殊情形，擬照價決標予該最低標。最低標如不接受決標或拒不簽約，不發還押標金。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":32,"stem":"投標廠商之標價超過底價時，下列何者為正確？","options":["議價之減價次數不得逾3次。","比減價格之次數為不得逾3次，不包括洽最低標減價1次。","比減價格之次數由機關限制次數，但應事先通知各比減廠商。","依招標文件規定。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":33,"stem":"採購法第50條第1項第5款所稱「不同投標廠商間之投標文件內容有重大異常關聯者」不包括下列何種情形？","options":["分包廠商為同一廠商者。","押標金由同一人繳納或申請退還者。","電子郵件網址相同者。","投標文件內容由同一人繕寫或備具者。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":34,"stem":"經常性採購以選擇性招標建立合格廠商名單方式辦理者，應建立至少幾家以上之合格廠商名單？","options":["3家。","10家。","6家。","2家。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":35,"stem":"底價之訂定時機，下列何者為正確？","options":["公開招標採分段開標者，其底價應於價格標開標前定之。","選擇性招標應於規格標審查後之下一階段開標前定之。","限制性招標之比價及議價，訂定底價前應先參考廠商之報價或估價單。","採公開取得3家以上廠商之書面報價或企劃書者，其底價應於進行比價或議價前定之。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":36,"stem":"下列何者超底價決標時，須報經上級機關核准？","options":["超過底價8%者。","超過底價4%而未超過8%者。","查核金額以上之採購而超過底價4%但未超過8%者。","查核金額以上之採購。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":37,"stem":"機關依採購法第42條第1項辦理分段開標，下列敘述何者為錯誤？","options":["機關辦理一次投標分段開標，投標廠商已投標而未開標之部分，原封發還。","採公開招標者，得僅就資格投標。","未通過前一階段審標之投標廠商，不得參加後續階段之投標。","採一次投標分段開標者，廠商應將各段開標用之投標文件分別密封。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":38,"stem":"機關依採購法第42條第1項辦理分段開標，下列敘述何者為正確？","options":["採分段開標者，得先辦理價格標後再審查資格或規格標。","僅就資格投標者，以公開招標為限。","採分段投標，未通過前一階段審標之投標廠商，不得參加後續階段之投標。","不論採分段開標或未分段開標，廠商均應將各段開標用之投標文件分別密封。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":39,"stem":"下列廠商行為何者非採購法處罰之犯罪行為？","options":["意圖影響決標價格而以契約使廠商不為價格之競爭。","意圖影響採購結果而借用他人名義投標。","意圖獲取不當利益而拒不履行契約。","以詐術使廠商無法投標。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":40,"stem":"下列何者非屬可能有圍標之嫌？","options":["不明人士蒐集領標廠商名稱。","投標廠商間彼此熟識。","投標文件內容由同一人或同一廠商繕寫或備具。","押標金由同一人或同一廠商繳納或申請退還。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":41,"stem":"以下何者不得採書面驗收，應辦理現場查驗？","options":["未達公告金額之工程採購，其採購金額逾公告金額十分之一者。","小額採購。","部分驗收其驗收金額不逾15萬元者。","即買即用或自供應至使用之期間甚為短暫，現場查驗有困難者。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":42,"stem":"機關辦理契約變更，「加帳金額」為新臺幣(下同)50萬元，「減帳金額」為50萬元，則其變更部分計算是否監辦之金額為多少？","options":["100萬元。","50萬元。","0元。","依原契約金額。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":43,"stem":"機關辦理採購採最低標決標時，認為最低標廠商之總標價或部分標價偏低，顯不合理，有降低品質、不能誠信履約之虞或其他特殊情形時，下列處置何者最適法？","options":["不經廠商說明，逕不決標予最低標廠商，押標金退還。","逕洽該廠商承諾繳差額保證金後決標。","不決標予最低標廠商，並不發還押標金。","如不擬決標予該廠商，仍須限期通知該廠商提出說明。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":44,"stem":"依採購法規定，下列敘述，何者正確？","options":["公開招標之開標及決標時間，不得逾等標期屆滿當日或次一上班日，以免相隔天數過長，徒生爭議。","機關得於招標文件規定投標廠商須出席開標以備減價或比減價，否則即視為無效標。","採行協商措施時，其審標程序應公開進行，惟審標內容應予保密。","公開開標之案件，機關得於招標文件中限制有權參加開標之每一投標廠商人數。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":45,"stem":"機關辦理某履約期限為2年之巨額清潔勞務採購，預算金額1年為新臺幣(下同)2,000萬元，合計為4,000萬元，經檢討有必要訂定具有相當財力之特定資格條件，機關得於招標文件訂定投標廠商之實收資本額為？","options":["600萬元。","150萬元。","250萬元。","400萬元。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":46,"stem":"某機關辦理一非屬特殊性質之財物採購，其採購金額為5,320萬元，廠商資格規定廠商實收資本額得要求不低於下列何者金額？","options":["5,320萬元。","5,400萬元。","500萬元。","不得限定資本額。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":47,"stem":"招標文件有關廠商資格「投標時須檢附代理日本日立HITACHI公司電梯維護保養之授權書面資料證明影本」之規定，屬於下列何項採購錯誤行為態樣？","options":["投標當時即必須擁有指定之設備。","投標當時即必須於指定地區設有分公司或維護站。","投標時須檢附原廠製造證明、原廠代理證明、原廠願意供應證明、原廠品質保證書。","限定國內廠商投標時須檢附與國外廠商技術合作之證明。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":48,"stem":"依採購法規定，機關得於招標文件規定之事項，下列何者正確？","options":["限定國內廠商投標時須檢附與國外廠商技術合作之證明。","廠商投標時所檢附之型錄須蓋代理廠商之章。","廠商投標時所檢附之型錄須為正本，不得為影本。","允許投標廠商於投標文件內預先提出同等品者，廠商應於投標文件內敘明同等品之廠牌、價格及功能、效益、標準或特性等相關資料，以供審查。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":49,"stem":"依採購法令規定，下列敘述何者正確？","options":["僅巨額採購始可訂定特定資格。","採單價決標者，招標文件應載明預估數量。","訂定廠商特定資格時，得限公部門(政府機關、公營事業、公立學校)之實績始可接受。","公會會員證，為廠商投標時所必要檢附的文件證明。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":50,"stem":"有關廠商資格之敘述，何者為正確？","options":["採購標的內之重要項目，有就該等項目訂定分包廠商資格之必要者，適用採購法有關投標廠商資格之規定。","廠商履行契約所必須具備之資格條件，其僅就廠商在我國之商業活動為整體考量即已符合規定。","機關辦理一採購，其兼有工程、財物及勞務等性質，而以工程認定其採購性質，雖該採購之勞務部分符合特殊採購情形之一，仍不得就勞務部分訂定特定資格。","依政府機關組織法律組成之非公司組織事業機構參加投標時，仍應繳驗目的事業主管機關核發之行業登記證、承攬或營業手冊及依商業團體法加入商業團體等。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":51,"stem":"有關投標廠商資格規定之敘述，下列何者正確？","options":["廠商應附公會出具之投標比價證明書，以證明其依法參加工業團體或商業團體。","投標時廠商即應擁有履約所需之設備。","開標時廠商應攜帶所有資格文件正本供查驗。","投標廠商得出具承諾於得標後一定期間內建立自有或特約維修站或場所。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":52,"stem":"下列何者非屬錯誤行為？","options":["營業稅證明限當期。","信用證明限公告日後取得。","得以實績為特定資格。","資本額限公告日前者。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":53,"stem":"下列何者非屬於資格限制競爭的情形？","options":["限公部門(政府機關、公營事業、公立學校)之實績。","限國內之實績。","廠商納稅之證明(如營業稅或所得稅等)。","限特定地區公會之會員。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":54,"stem":"下列何者正確？","options":["規定投標當時即必須擁有指定之設備。","規定廠商所附型錄均須為正本。","規定廠商提出之實績證明須為公家機關。","規定外標封上應標示廠商名稱及地址。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":55,"stem":"下列非屬政府採購錯誤行為態樣？","options":["履約期限為日曆天未載明假日是否計入。","非特殊採購規定特定資格。","未將選購項目計入採購金額。","特殊或巨額採購不訂定特定資格。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":56,"stem":"下列招標方式何者正確？","options":["未達公告金額之採購不公開取得報價單，通案以議價或比價方式辦理。","公開招標可單就資格標辦理招標。","機關依採購法第22條第1項第9款辦理之採購，屬限制性招標，其公開評選後應辦理議價。","分段開標，得依價格、資格、規格之順序開標。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":57,"stem":"下列何者非屬政府採購錯誤行為態樣之一？","options":["允許投標廠商查看其他廠商之投標文件。","投標文件審查結果，未通知投標廠商。","廠商未依通知出席開標即視為無效標。","機關於招標文件規定廠商得請求釋疑之期限，大於等標期之四分之一。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":58,"stem":"下列何者非屬政府採購錯誤行為態樣之一？","options":["不考慮廠商單價是否合理而強以機關預算單價調整廠商單價。","不同數量之2項以上標的，以單價和決標。","私下洽投標廠商協助審查其他廠商之投標文件。","已決標之採購案，未得標廠商要求發還投標文件者，機關得保留其中一份，其餘發還，或僅保留影本。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":59,"stem":"下列何者為非？","options":["訂定投標廠商資格及規格均不得不當限制競爭。","招標文件得不記載終止或解除契約之條件。","履約期限過短違反公平合理原則。","評選委員不得由他人代理出席。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":60,"stem":"下列何者非屬政府採購錯誤行為態樣之一？","options":["未將國內員工總人數逾100人之得標廠商資料彙送至主管機關決標資料庫。","刁難廠商使用同等品。","未規定主要部分卻刁難廠商分包。","遇有犯採購法第87條至第92條罪之嫌者，通知檢警調單位。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":61,"stem":"下列何者不正確？","options":["招標公告之增購條件及上限寫「詳招標文件」即可。","招標公告之採購金額，應為預算金額加計後續擴充項目所需金額。","依採購案需要，招標文件得公告底價。","機關依採購法第22條第1項第9款辦理之採購，雖屬限制性招標，仍應刊登政府採購公報。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":62,"stem":"依投標廠商資格與特殊或巨額採購認定標準規定，不得訂定下列何種資格證明？","options":["營業稅或所得稅之納稅證明。","協會會員證。","招標文件規定之樣品。","會計師簽證之財務報表。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":63,"stem":"下列關於準備招標文件之敘述，何者正確？","options":["採購法已規定之事項，均不必再於招標文件規定。","規定廠商對於機關之決定不得異議。","規定廠商之投標文件應以書面密封。","規定投標文件標封應於封口蓋騎縫章，否則無效。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":64,"stem":"未達公告金額之採購，得免收押標金、保證金之情形為何？","options":["僅押標金。","僅保證金。","押標金或保證金。","均不得免收。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":65,"stem":"下列關於押標金之規定，何者係屬採購錯誤行為？","options":["以金融機構定期存款單繳納者，其申請設定質權時，應由質權人會同辦理。","以金融機構支票繳納者，應為即期。","應以投標廠商名義繳納。","得以主管機關核定之電子化方式繳納。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":66,"stem":"下列敘述何者正確？","options":["投標廠商繳納之押標金如有不予發還之情形者，全部不予發還，包含其依招標文件規定額度溢繳之部分。","甲廠商之子公司經機關依採購法規定列為拒絕往來廠商，其效力不及於甲廠商。","採購法第22條第1項第6款所稱「必須追加契約以外之工程」之情形，不含原契約項目規格之變更。","機關辦理招標文件公開閱覽，對於閱覽廠商或民眾意見之處理，應以密件方式辦理。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":67,"stem":"下列採購法第58條執行情形，何者正確？","options":["最低標廠商報價偏低，顯不合理、有影響履約品質之虞，機關得未通知廠商說明即不決標予該廠商，改決標予次低標。","訂有底價之採購，機關如發現底價偏高造成最低標標價偏低者，不適用採購法第58條之規定。","機關通知最低標廠商限期繳納差額保證金時，應一併告知底價，以利廠商核計差額保證金額度是否正確。","最低標廠商報價偏低，顯不合理、有影響履約品質之虞，如其願意繳納差額保證金，機關即應決標予該廠商。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":68,"stem":"下列何者為是？","options":["開價格標即為開標。","廠商未依通知出席即視為無效標。","審標時對投標文件疑問，個別洽詢。","允許投標廠商查看其他廠商投標文件。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":69,"stem":"下列招標文件規定何者為非？","options":["限制投標廠商出席公開開標會議之人數。","廠商未附具投標廠商聲明書者，不得於開標後補正。","廠商出席開標人員應攜帶廠商大小章。","廠商不及提出最近一期營業稅納稅證明者，得以前一期之納稅證明代之。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":70,"stem":"下列敘述何者正確？","options":["機關辦理財物採購，尚非一定須要求投標廠商投標文件應檢附採購標的之型錄供審查。","招標文件不得免費提供廠商領取。","採購法第22條第1項第6款所稱「必須追加契約以外之工程」之情形，不包括原契約項目規格之變更。","機關依科學技術基本法第6條第4項規定辦理之採購，不適用採購法，惟為促進競爭，仍可利用政府電子採購網辦理公告事宜。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":71,"stem":"機關採最低標決標，一開價格標就有2家廠商標價相同且低於底價，其後續處理程序何者正確？","options":["由該2家廠商比減1次，以低價者決標。","由該2家廠商比減2次，以低價者決標。","由該2家廠商比減3次，以低價者決標。","逕行抽籤決定之。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":72,"stem":"下列何者非屬政府採購錯誤行為態樣？","options":["限定投標廠商之所在地。","營業稅之繳納證明限當期者。","押標金繳納額度為標價百分之三。","決定最有利標，再洽廠商減價。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":73,"stem":"下列何者非屬政府採購錯誤行為態樣？","options":["抄襲特定廠商之規格資料。","廠商實績限公部門或國內實績。","型錄須為正本。","因有特殊情形必須延長驗收期限，簽報有權人員核准。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":74,"stem":"下列敘述何者為是？","options":["決標之單價金額為新臺幣5,000元，於辦理決標公告時決標金額填列為新臺幣5,000元，尚屬適法。","複數決標案件，決標公告時決標金額應合併計算填列。","有一採購案，原契約金額為新臺幣200萬元，機關因業務需要而追加新臺幣8萬元，依規定仍應辦理定期彙送。","減價收受金額之計算得預先於契約中約定。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":75,"stem":"下列何者非屬政府採購錯誤行為態樣之一？","options":["查驗或驗收時依廠商建議之區域鑽心取樣。","訂有底價之採購，廠商報價與底價相同，機關未予決標，而要求廠商減價。","未更改招標文件內容而重行訂定之底價，除有正當理由外，較廢標前合格廠商之最低標價為高。","公告底價。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":76,"stem":"下列關於投標廠商特定資格之規定，何者係屬正確？","options":["所得稅或營業稅之納稅證明。","公會會員證。","曾完成與招標標的類似之製造、供應或承做之文件。","財力及實績證明。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":77,"stem":"機關依「投標廠商資格與特殊或巨額採購認定標準」訂定「具有相當財力」之特定資格證明，下列何項規定不得訂定？","options":["流動負債不低於流動資產。","權益不低於招標標的預算金額十二分之一。","實收資本額不低於招標標的預算金額之十分之一。","總負債金額不超過權益4倍。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":78,"stem":"公開招標廢標後大幅修改招標文件後再行辦理招標必須多少家以上廠商投標始得開標？","options":["3家。","1家。","由機關決定。","視招標文件之規定。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":79,"stem":"下列何種採購不允許採統包方式辦理？","options":["工程採購。","勞務採購。","財物採購。","設計加施工案。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":80,"stem":"機關內之監辦人員對採購不符合採購法規定程序而提出意見，下列作法何者為正確之行為？","options":["辦理採購之主持人或主驗人如不接受，應納入紀錄，報機關首長或其授權人員決定之。","辦理採購之主持人或主驗人得不接受，但應納入紀錄，陳報機關首長或其授權人員備查。","由辦理採購之主持人或主驗人決定是否接受，如不接受，應納入紀錄。","辦理採購之主持人或主驗人決定是否接受，如不接受，並得納入紀錄。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":81,"stem":"最低標廠商報價低於底價百分之八十，但在底價百分之七十以上時，下列敘述何者正確？","options":["要決標給最低標時，該商一定須繳交差額保證金。","若決標給次低標時，則一定不須繳交差額保證金。","縱使最低標廠商說明合理要決標給該商亦須繳交差額保證金。","最低標廠商之說明機關如認為合理，則不須繳交差額保證金。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":82,"stem":"下列何者錯誤？","options":["未達公告金額之工程或財物採購，得由機關視需要決定是否填具結算驗收證明書。","結算驗收證明書或其他類似文件，機關應於驗收完畢後15日內填具。","機關辦理採購，有部分先行使用之必要或已履約之部分有減損滅失之虞者，應先就該部分辦理驗收或分段查驗供驗收之用，並得就該部分支付價金。但保固應自全部驗收起算。","驗收人對工程或財物隱蔽部分拆驗或化驗者，其拆除、修復或化驗費用之負擔，依契約約定。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":83,"stem":"採購法就機關處理未得標廠商之已開標文件的方式何者為非？","options":["保留其中一份。","僅保留影本。","經廠商要求全部予以退還。","採分段開標者尚未開標之部分應予發還。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":84,"stem":"有關投標廠商資格規定之敘述，下列何者不正確？","options":["訂定特定資格應先評估廠商家數，及檢討有無不當限制競爭。","訂定廠商實績時，宜限國內政府部門(政府機關、公營事業、公立學校)，較易查證。","非特殊或巨額採購，不得訂特定資格。","投標廠商之設立地或所在地，除其他法令另有規定者，不應予以限制。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":85,"stem":"下列敘述何者為是？","options":["履約保證金以不逾契約價金百分之十為原則。","保固保證金以不逾預算百分之十為原則。","差額保證金額度係最低標標價與底價之差額。","押標金不得逾新臺幣1,000萬元。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":86,"stem":"機關依採購法第26條第3項規定，於招標文件要求或提及之參考廠牌應符合之情形，下列敘述何者錯誤？","options":["所列廠牌目前均有製造、供應，容易取得，價格合理，能確保採購品質，且無代理商、經銷商有公平交易法所稱之獨占或聯合行為之情事。","所列廠牌之價格、功能、效益、標準及特性，均屬相當。","所列廠牌係供廠商就所列廠牌擇一履約，廠商不得拒絕採用。","所列廠牌數量不以3家為限。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":87,"stem":"機關辦理公告金額以上醫療器材採購其有關採購標的規格之訂定，下列敘述何者錯誤？","options":["依功能或效益。","所標示特性不得限制競爭。","有國際標準或國家標準者從其規定。","指定進口品。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":88,"stem":"下列敘述何者錯誤？","options":["廠商領標，目前多為利用政府電子採購網採電子領標。","公開招標之等標期，自機關傳輸招標資訊至主管機關資料庫當日起算。","廠商領標時不得登記領標廠商名稱。","平底價亦應決標。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":89,"stem":"機關辦理採購，下列敘述何者正確？","options":["公告日108.4.8至截止投標日108.4.30，投標須知規定：「廠商對招標文件內容有疑義者，得於公告之次日起4日內以書面向本機關請求釋疑」。","經評定為最有利標之廠商，因故未於規定期限內完成訂約者，依規定沒收其押標金，機關得依評比序位，依序洽請其他廠商完成簽約。","以單價決標者，應於招標文件載明預估數量或採購金額上限。","流標或廢標後大幅修改招標文件重行招標，而依採購法第48條第2項規定以第2次招標處理。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":90,"stem":"下列何者錯誤？","options":["公開取得企劃書之招標方式得搭配參考最有利標精神擇最優者議價。","機關依採購法第22條第1項第9款辦理公開評選，機關得評選2家以上優勝廠商辦理比價。","機關驗收完畢後填具結算驗收證明書或其他類似文件予廠商者，其開立之對象應為該採購契約之當事人。","押標金得以未載明受款人之金融機構支票繳納。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":91,"stem":"下列有關投標廠商資格條件之敘述，何者正確？","options":["如屬特殊或巨額採購，得限定投標廠商須具有曾完成公部門(政府機關、公營事業、公立學校)之相當經驗或實績。","投標廠商提出之資格證明文件影本未加蓋廠商印章或未載明與正本相符者，無效。","限定國內廠商投標時須檢附與國外廠商技術合作之證明。","採購兼有工程、財物或勞務2種以上性質，而以其中之一認定其歸屬者，其他性質符合特殊採購情形者，得以該其他性質於該採購所占比例或相關部分訂定特定資格。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":92,"stem":"採購金額新臺幣50萬元之案件以公開招標方式辦理，若無電子領標投標，其等標期最少應有幾天？","options":["5天。","7天。","14天。","3天。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":93,"stem":"下列有關規格條件之敘述，何者正確？","options":["如機關經檢討以正字標記為規格標示符合所需之功能或效益者，得指定使用「正字標記」產品，無須於招標文件註明「或同等品」字樣。","機關所擬定之技術規格，其在目的或效果上有無限制競爭，得以符合該規格之廠商家數多寡作為判斷依據，如逾3家，即無限制競爭之情形。","廠商得標後提出之同等品，其價格如較契約所載原要求或提及者為低，應自契約價金中扣除。","須檢附本地代理商保證書。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":94,"stem":"依採購法規定，下列敘述何者正確？","options":["評定最有利標，如係採固定費率或公布決標價格者，不得再要求廠商詳列組成該價格之內容或納入評選。","機關辦理公開招標，其採分段開標者，依採購法規定，開第1段標當日必須審標完畢。","機關辦理公開招標，於招標公告所定開標時間未到即先開啟廠商標封審標，並不符合採購法之規定，不得採行。","機關辦理設計競賽設計成果之製作費用，以採單價計算法為原則。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":95,"stem":"機關辦理採購，下列敘述何者錯誤？","options":["廠商將投標文件置於不透明之信封，以膠帶封裝者，符合採購法第33條第1項所稱書面密封。","機關得於招標文件中規定允許廠商於開規格標前補正非契約必要之點之文件。","同一投標廠商就同一採購之投標，以一標為限；其有違反而於開標前發現者，所投之標應不予開標。","廠商以自身公司簽發之支票繳納押標金，不符合採購法之規定。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":96,"stem":"依採購法規定，機關得於招標文件規定之事項，下列何者正確？","options":["限廠商代表於開標當時必須攜帶與投標文件所用相同之印鑑，否則無權參與減價或比減價。","廠商投標當時即必須於指定地區設有分公司或維護站。","投標時須檢附原廠製造證明及原廠品質保證書。","小額採購仍可以訂定底價方式辦理採購。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":97,"stem":"依採購法規定，下列敘述何者正確？","options":["採最有利標決標，於評定出最有利標後，應再洽廠商減價。","訂有底價之採購，廠商報價金額與底價相同時，機關得要求廠商再減價。","公開開標之案件，機關得於招標文件中限制有權參加開標之每一投標廠商人數。","公開客觀評選優勝廠商，其與優勝廠商議價之次數不得超過3次。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":98,"stem":"依採購法規定，下列敘述何者正確？","options":["機關於招標文件規定廠商投標時須檢附之營業稅納稅證明，依採購法令規定廠商不及提出最近一期證明者，得以前一期之納稅證明代之。","機關於招標文件中規定廠商投標時，限使用機關所提供之標封否則投標無效，尚無不可。","依採購法規定，機關發給、發售或郵遞招標文件時，不得登記領標廠商之名稱。但詢問領標廠商名稱或索取名片尚無不可。","採公開招標分段開標者，得僅就資格投標。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":99,"stem":"下列敘述何者正確？","options":["依採購法規定，機關得於招標文件規定廠商應於投標標封封口蓋騎縫章及投標文件應逐頁蓋章，否則為無效標。","依「投標廠商資格與特殊或巨額採購認定標準」規定，機關得就投標廠商資格條件，於招標文件規定廠商投標時須檢附經股東會通過同意該廠商參與本採購案投標之會議紀錄。","依採購法規定，機關不得於招標文件或招標公告規定廠商僅能親自領取招標文件而不得採郵遞方式領取。","依採購法規定，僅就資格、規格合併投標者，以選擇性招標為限。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":100,"stem":"依採購法規定，下列敘述何者正確？","options":["有一新臺幣85萬元古蹟構造物之修建採購，該採購案於招標文件中不得訂定特定資格。","機關辦理採購，使用主管機關制定之招標投標簽約三用文件，於決標後毋須通知廠商至機關簽約。","評定最有利標，如將廠商簡報列為評選項目者，其配分不得逾10%。","廠商以釘書針裝訂投標標封，非屬書面密封，機關應不予接受。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":101,"stem":"依採購法規定，下列何者正確？","options":["規定廠商代表於開標當時必須攜帶與投標文件所用相同之印鑑，否則無權出席。","招標文件對親自及郵遞領取訂定不同之截止期限。","廠商信用證明限公告日後所取得者。","開標後不公開審標。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":102,"stem":"採購法限制性招標之敘述，下列何者錯誤？","options":["僅適用於公告金額以上之採購。","無須報上級機關核准。","包括採公開評選優勝廠商之情形。","得以比價方式辦理者，優先以比價方式辦理。"],"answer":1},{"chapter":"13","chapterName":"錯誤採購態樣","num":103,"stem":"機關依採購法第22條第1項第7款辦理限制性招標之情形，下列敘述何者正確？","options":["招標公告及招標文件均須載明後續擴充之期間、金額及數量。","招標公告及招標文件均須載明後續擴充之期間、金額或數量。","計算採購金額時無須將預估後續擴充項目所需金額計入。","招標公告及招標文件已敘明後續擴充之金額，機關於該金額內辦理後續擴充，無須經議價程序。"],"answer":2},{"chapter":"13","chapterName":"錯誤採購態樣","num":104,"stem":"機關擬依採購法第22條第1項第6款辦理限制性招標之情形，下列敘述何者正確？","options":["原契約項目數量之增加，其增加之契約金額，不列入追加累計金額。","原契約項目規格之變更，其增加之契約金額，不列入追加累計金額。","因故減項辦理招標，履約期間因尚有預算，逕依本款向得標廠商辦理契約變更，採購原減項內容。","不同區域之地下管線工程，如契約未載明屬同一招標目的範圍，非屬原招標目的範圍。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":105,"stem":"機關依採購法第22條第1項第16款辦理限制性招標之情形，下列敘述何者錯誤？","options":["公告金額以上採購，招標前應報經主管機關認定。","未達公告金額之採購，招標前無須報經主管機關認定。","未達公告金額採購，其金額逾公告金額十分之一者，通案簽經機關首長或其授權人員核准依該款辦理。","未達公告金額採購，其金額逾公告金額十分之一者，其簽辦文件應就個案敘明邀請指定廠商比價或議價之適當理由。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":106,"stem":"下列敘述何者正確？","options":["依採購法第22條第1項第9款辦理技術服務採購之公開評選，其招標資訊得免刊登政府採購公報。","機關以限制性招標辦理者，均無須刊登政府採購公報。","機關辦理採購，採購標的中僅40％為專屬權利，只要經機關評估無其他合適之替代標的，仍得依採購法第22條第1項第2款規定採限制性招標。","依採購法第22條第1項第10款辦理限制性招標者，投標廠商僅1家即得辦理開標。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":107,"stem":"採購法第22條第1項第6款有關「未逾原主契約金額百分之五十者」，其是否逾50%之計算，下列分子之計算何者正確？","options":["以單次金額計算。","以追加與追減絕對值之累計金額計算。","以追加與追減之累計金額計算。","以追加累計金額計算。"],"answer":4},{"chapter":"13","chapterName":"錯誤採購態樣","num":108,"stem":"關於招標文件規定廠商必須取得ISO9000系列驗證者，下列敘述何者正確？","options":["僅巨額採購得規定之。","僅特殊採購得規定之。","巨額採購或特殊採購得規定之。","公告金額以上之採購皆得規定之。"],"answer":3},{"chapter":"13","chapterName":"錯誤採購態樣","num":109,"stem":"下列關於機關辦理巨額採購之描述何者正確？","options":["預期使用情形及其效益目標、開始使用日期及使用年限、評估使用情形及其效益之分析指標，應於採購完成後，開始啟用前簽經機關首長或其授權人員核准。","向主管機關提報採購之使用情形及其效益分析，如屬勞務採購者，其使用期間為契約約定之履約期間，除工作內容重複者外，以契約工作完成後1次提報為原則。","如驗收後因故逾1年仍未啟用者，應自驗收後每屆滿1年之次日起1個月內逐年向上級機關提報未啟用之原因，俟啟用後再改向主管機關提報使採購之使用情形及其效益分析。","向主管機關提報巨額採購之使用情形及其效益分析，除以電子化方式為之外，應另備書面文件通知主管機關。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":1,"stem":"某工程採購在開標前，機關發現招標文件之「工程規範說明書」漏印兩頁重要圖說。此時機關最適當的處置為何？","options":["已有廠商投標，為保護投標廠商權益，應照常開標決標，事後再辦理變更。","重要圖說屬「變更或補充招標文件內容」之情形，應不予開標。","繼續開標，但要求投標廠商現場簽名表示不計較漏印部分。","只要投標廠商超過3家，即可視為不影響公正，繼續辦理決標。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":2,"stem":"機關辦理工程採購之估驗計價付款期限，下列敘述何者正確？","options":["依行政院主計總處之「公款支付時限及處理應行注意事項」辦理。","依個案契約約定辦理；契約未約定者，依採購法第73條之1規定辦理。","契約不得約定機關應於15工作天內完成審核並付款予廠商。","依採購法規定，不論是否涉及向上級機關申請核撥補助款者，期限均相同。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":3,"stem":"統包工程採購，契約價金係以總價決標，且以契約總價給付。某項目實作數量較核定詳細表所定數量增加8％時，就契約價金之結算，下列何者正確？","options":["以契約變更增加該項目契約價金3％。","以契約變更增加該項目契約價金8％。","不予增加契約價金。","視經費情況協議之。"],"answer":3},{"chapter":"2","chapterName":"採購契約","num":4,"stem":"機關辦理資訊服務採購，下列何者錯誤？","options":["辦理重大新興資訊業務，以整體委外服務方式，不可包括硬體設備等財物採購。","符合經濟部投資審議司公告「具敏感性或國安(含資安)疑慮之業務範疇」者，得禁止以陸資資訊服務業為分包廠商。","得要求廠商駐點服務人員簽具保密切結書。","可採行最有利標決標。"],"answer":1},{"chapter":"2","chapterName":"採購契約","num":5,"stem":"機關辦理勞動派駐採購，下列何者為是？","options":["機關不得指揮監督管理派駐勞工。","可採行最有利標決標。","機關得於要派契約中訂明派駐勞工年齡不得逾60歲。","機關得於招標文件訂明得標廠商應僱用原派駐勞工。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":6,"stem":"依採購法主管機關之「採購契約範本附記條款特別聲明」，廠商於履約過程使用資通訊產品履約時，下列何者不得使用？","options":["中國大陸廠牌之資通訊產品。","日本國廠牌之資通訊產品。","韓國廠牌之資通訊產品。","美國廠牌之資通訊產品。"],"answer":1},{"chapter":"2","chapterName":"採購契約","num":7,"stem":"有關採購法主管機關所定「採購契約範本附記條款特別聲明」載明履約禁用中國大陸廠牌資通訊產品、不得提供公務機密予AI及使用AI履約須報機關同意等規定，下列何者錯誤？","options":["履約過程及履約標的禁止使用及採購中國大陸廠牌資通訊產品〔含軟體、硬體及服務(含生成式AI程式如：Deepseek等)〕。","廠商履約過程及成果需透過使用及採購生成式AI以產出履約標的內容或相關文件者，應先徵得機關同意始得為之。","廠商不得向生成式AI提供採購案涉及公務應保密、個人及未經機關(構)同意公開之資訊，亦不得向生成式AI詢問可能涉及採購案機敏或個人資料之事項。","契約本文之效力優於本特別聲明附記條款。"],"answer":4},{"chapter":"2","chapterName":"採購契約","num":8,"stem":"下列何者錯誤？","options":["機關通知廠商變更契約，廠商於機關接受其所提出須變更之相關文件前，不得自行變更契約。","機關於接受廠商所提出須變更之事項前即請求廠商先行施作，其後如未依原通知辦理契約變更者，應補償廠商所增加之必要費用。","契約所定事項如有違反法令或無法執行之部分，該部分無效。該無效之部分，機關及廠商必要時得依契約原定目的更正之。","機關以正式公文通知廠商變更契約，縱廠商表示反對，契約變更仍生效力。"],"answer":4},{"chapter":"2","chapterName":"採購契約","num":9,"stem":"契約訂有分段進度及最後履約期限，且均訂有逾期違約金者，屬全部完工後使用或移交之情形，其逾期違約金之計算下列何者為是？","options":["逾分段進度但未逾最後履約期限，計算逾分段進度之違約金。","逾分段進度且逾最後履約期限，應就逾分段進度及最後履約期限部分，分別計罰違約金。","分段完工期限與其他採購契約之進行有關者，逾分段進度但未逾最後履約期限，其有逾分段進度已收取之違約金者，於未逾最後履約期限後發還。","最後履約期限與其他採購契約之進行有關者，未逾分段進度但逾最後履約期限者，計算逾最後履約期限之違約金。"],"answer":4},{"chapter":"2","chapterName":"採購契約","num":10,"stem":"下列何者錯誤？","options":["機關對於廠商、分包廠商及其人員因履約所致之人體傷亡或財物損失，不負賠償責任。","因可歸責於廠商之事由，致機關遭受損害者，廠商應負賠償責任，機關得於招標文件預先載明廠商無需對「所失利益」負賠償責任。","契約之一方未請求他方依契約履約者，得視為或構成一方放棄請求他方依契約履約之權利。","契約所定技術規格違反採購法第26條規定，廠商得敘明理由，檢附規格、功能、效益及價格比較表，徵得機關書面同意後，以其他規格、功能及效益相同或較優者代之。"],"answer":3},{"chapter":"2","chapterName":"採購契約","num":11,"stem":"招標文件未另定契約生效條件者，下列何者為契約生效日？","options":["決標日。","決標日之次一上班日。","雙方完成契約簽署之日。","依機關指定之日期。"],"answer":1},{"chapter":"2","chapterName":"採購契約","num":12,"stem":"下列敘述何者正確？","options":["分包廠商不得將分包契約再行分包。","轉包廠商如有再轉包者，其中間轉包之廠商雖未與機關訂有契約，亦未實際履行契約者，仍應與得標廠商及最後轉包廠商對機關負連帶履行及賠償責任。","機關要求廠商報備其分包契約時，廠商應一併將分包部分設定權利質權予分包廠商。","廠商就分包部分設定權利質權予分包廠商，則該分包廠商所負契約連帶瑕疵擔保責任，與得標廠商相同。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":13,"stem":"下列就採購法主管機關訂定之採購契約範本之敘述何者正確？","options":["屬必要條件。","以採用為原則。","範本內容均不可修改。","只要預先聲明即可不必採用。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":14,"stem":"機關視個案性質，於工程採購招標文件中要求廠商履約期間辦理營造綜合保險，下列敘述何者有誤？","options":["工程有延期或遲延履約，保險期間順延。","將機關及其技術服務廠商、施工廠商及全部分包廠商列為共同被保險人。","附加第三人建築物龜裂倒塌責任險或鄰近財物附加條款。","載明每一事故之廠商自負額下限。"],"answer":4},{"chapter":"2","chapterName":"採購契約","num":15,"stem":"下列何者情形，致廠商履約費用增加或減少者，契約價金得予調整？","options":["匯率變動。","汽油價格上漲。","政府縮短工時政策。","員工罷工。"],"answer":3},{"chapter":"2","chapterName":"採購契約","num":16,"stem":"依採購法主管機關訂定之工程採購契約範本，契約價金係以總價決標，且以契約總價給付，工程標的中某項之實作數量較契約所定數量增加達百分之十八，以下何者正確？","options":["以契約變更增加該項契約價金百分之十五。其他百分之三，由廠商自行負擔。","應完全由廠商自行負擔。","應以契約變更增加該項契約價金百分之十八。","由機關與廠商各負擔一半。"],"answer":1},{"chapter":"2","chapterName":"採購契約","num":17,"stem":"以下簽訂契約之方式，何者為非？","options":["採購個案，招標文件預先載明分訂2個契約，而與廠商訂定2個契約。","採購個案，因採複數決標，得標後，分別與廠商就其得標項目訂定契約。","採購個案，因採共同投標，得標後與各該成員就其主辦項目，分別訂定契約。","機關利用共同供應契約採購，下訂後無須再與廠商簽訂契約。"],"answer":3},{"chapter":"2","chapterName":"採購契約","num":18,"stem":"下列敘述何者正確？","options":["得標廠商其於國內員工總人數逾100人，履約期間僱用身心障礙者及原住民人數各應達國內員工總人數1%之規定，須於契約明定始生效力。","政府採購契約約定履約期限以日曆天計算者，如該履約期間之末日適逢星期假日、國定假日或其他休息日，而契約未有特別約定者，適用民法第122條所定「以其休息日之次日代之」。","契約應訂明得標廠商其於國內員工總人數逾100人，履約期間僱用身心障礙者及原住民人數不足者，應分別依規定繳納代金，並將繳納證明文件影本送機關查核。","得標廠商擬分包之項目及分包廠商，屬得標廠商之權責，機關不得予以審查。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":19,"stem":"下列敘述何者正確？","options":["契約文件不包括招標文件。","對於分包廠商履約之部分，得標廠商仍應負完全責任。但分包契約報備於機關者不在此限。","分包契約報備於採購機關，並經得標廠商就分包部分設定權利質權予分包廠商者，其分包部分之瑕疵擔保責任，由分包廠商承擔，得標廠商得免除其責任。","契約條款預先置於招標文件。"],"answer":4},{"chapter":"2","chapterName":"採購契約","num":20,"stem":"下列何者非機關得辦理採購契約價金調整之情形？","options":["因國內政府法令之變更。","因國外稅捐變更。","總價結算工程契約之單項履約數量因契約變更須增減。","依契約約定辦理物價指數調整。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":21,"stem":"依採購契約要項，逾期違約金，以契約價金總額之多少比率為上限？","options":["10%。","20%。","30%。","40%。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":22,"stem":"得標廠商，在何種情形下，得請求契約變更？","options":["所交之財物不符契約約定。","機關之需求變更。","契約原標示之廠牌型號停產。","所使用之材料不符契約約定，要求減價收受。"],"answer":3},{"chapter":"2","chapterName":"採購契約","num":23,"stem":"下列何者非屬契約文件？","options":["契約本文。","投標文件。","招標文件。","拒絕往來廠商名單。"],"answer":4},{"chapter":"2","chapterName":"採購契約","num":24,"stem":"逾期違約金，為損害賠償預定違約金，以日為單位，請問下列情形何者不宜？","options":["違約金之上限定為契約總價之百分之五十。","每逾1日以契約總價之一定比率處罰。","違約金之上限定為契約總價之百分之二十。","每逾1日以定額處罰。"],"answer":1},{"chapter":"2","chapterName":"採購契約","num":25,"stem":"契約約定所有應檢驗或測試之費用應由廠商負擔。在何種情況下應由機關負擔？","options":["檢驗結果合格。","測試結果不合格。","檢測契約約定以外之項目結果合格。","檢測契約約定以外之項目結果不合格。"],"answer":3},{"chapter":"2","chapterName":"採購契約","num":26,"stem":"機關與廠商於契約之相互通知，除得於契約中約定外，不宜以下列何種方式為之？","options":["書面文件。","信函。","傳真。","口頭。"],"answer":4},{"chapter":"2","chapterName":"採購契約","num":27,"stem":"下列敘述何者正確？","options":["契約變更以機關公文通知即為有效。","廠商履約結果涉及智慧財產權者，機關應取得全部權利。","機關對於廠商及其人員因履約所致之人體傷亡或財物損失，不負賠償責任。","機關應就廠商向保險人索賠所費時間給予延長履約期限。"],"answer":3},{"chapter":"2","chapterName":"採購契約","num":28,"stem":"下列敘述何者錯誤？","options":["機關得於契約約定，廠商擬分包之項目及分包廠商，機關得予審查。","機關應對廠商工地作業及施工方法之適當性、可靠性及安全性負完全責任。","機關得於契約約定履約爭議經契約雙方同意並訂立仲裁協議書後，依契約約定及仲裁法規定提付仲裁。","採購標的之送達地點及履約處所，應於契約內訂明。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":29,"stem":"下列何種情形，廠商尚不得敘明理由，檢附規格、功能、效益及價格比較表，徵得機關書面同意後，以其他規格、功能及效益相同或較優者代之？","options":["契約原標示之廠牌或型號不再製造或供應。","契約原標示之分包廠商不再營業或拒絕供應。","較契約原標示者更優或對機關更有利。","契約原標示之廠牌價格高，契約價格無法容納。"],"answer":4},{"chapter":"2","chapterName":"採購契約","num":30,"stem":"下列敘述何者錯誤？","options":["契約文件包括招標文件及其變更或補充。","廠商之投標文件非屬契約文件。","契約文件得包括以書面、錄音、錄影、照相、微縮、電子數位資料或樣品等方式呈現之原件或複製品。","契約所包括之各種文件，應明定其效力及優先順序。"],"answer":2},{"chapter":"2","chapterName":"採購契約","num":31,"stem":"下列敘述何者錯誤？","options":["採購契約要項內容，由機關依採購之特性及實際需要擇訂於契約。","契約文字應以中文書寫，其與外文文意不符者，除契約另有約定者外，以中文為準。","契約變更，除採購法另有規定外，非經機關及廠商雙方之合意，作成書面紀錄，並簽名或蓋章者，無效。","任何契約均應記載固定金額之總價。"],"answer":4},{"chapter":"2","chapterName":"採購契約","num":32,"stem":"契約訂有分段進度及最後履約期限，且均訂有逾期違約金，屬分段完工使用或移交者，除分段完工期限與其他採購契約之進行有關者外，逾分段進度且逾最後履約期限者，其逾期違約金之計算下列何者為是？","options":["扣除已分段完工使用或移交部分之金額，計算逾最後履約期限之違約金。","計算逾分段進度之違約金。","分別計算違約金。但逾最後履約期限之違約金，應扣除已分段完工使用或移交部分之金額計算之。","個別計算違約金。"],"answer":3},{"chapter":"2","chapterName":"採購契約","num":33,"stem":"廠商於履約過程使用中國大陸廠牌資通訊產品(含中國大陸生成式AI程式Deepseek)，下列何者錯誤？","options":["機關得以書面通知廠商終止或解除全部或部分契約。","廠商於得標後只要不簽署「使用資通訊產品禁制事項同意書/切結書」就可以使用中國大陸廠牌資通訊產品。","致第三人權利受有損害者，廠商應負責任。","廠商違反契約禁制事項，適用契約本文關於權利及責任條款之違約責任，就機關所受損害負賠償之責。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":1,"stem":"以下何者雖未於招標文件或契約預為載明，仍得辦理？","options":["因有先行使用之必要者，經機關首長或其授權人員核准，辦理部分驗收。","允許一定家數內之廠商共同投標。","因歸責於廠商之事由致解除契約，機關不予發還該廠商履約保證金。","因歸責於廠商之事由造成履約延遲，機關處罰廠商每日契約總價千分之一之逾期違約金。"],"answer":1},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":2,"stem":"機關辦理採購，有關招標文件對於陸資廠商之資格規定，下列何者為非？","options":["機關可依個案需要，明定允許大陸地區廠商或其產品或勞務參與。","非適用條約或協定之採購，可於招標文件規定不允許第三地區含陸資成分之廠商參與。","依我國法律設立登記之公司或事業，其含陸資成分達1/2以上之廠商，視為大陸地區廠商。","倘以公告方式辦理者，除有法規或條約協定之依據，並於招標文件訂定限制條件外，不得限制在臺陸資廠商參與。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":3,"stem":"有關招標文件對於優良廠商應繳納之押標金及保證金規定，下列何者為非？","options":["繳納履約保證金後方為優良廠商者，不溯及適用減收規定。","對列為政府電子採購網優良廠商資料庫之廠商，機關均得據以減收押標金及保證金，不以招標文件載明者為限。","減收保證金後獎勵期間屆滿者，免補繳減收之金額。","減收保證金後發生不發還該保證金情形者，廠商應就不發還金額中屬減收之金額補繳之。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":4,"stem":"機關允許外國廠商投標之採購，下列敘述何者為是？","options":["如招標文件未訂明投標廠商之標價幣別得為美元，因美元為國際流通貨幣，廠商仍得以美元報價。","投標廠商標價幣別在二種以上者，其總價之折算，依決標前一辦公日臺灣銀行外匯交易收盤即期賣出匯率折算之。","外國廠商以等值外幣繳納押標金及保證金者，以繳納日前一辦公日臺灣銀行外匯交易收盤即期賣出匯率折算之。","機關不得於招標文件載明外國廠商免附具加入工業或商業團體之證明。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":5,"stem":"機關辦理採購，應依政府採購法及相關法令製作招標文件，下列敘述何者正確？","options":["未達公告金額採購仍適用採購法第26條規定。","適用WTO政府採購協定(GPA)之採購案，仍得於招標文件規定優先採購我國產品。","機關辦理公告招標，於招標文件就招標文件提及之特定來源地註明「或同等品」。","機關於招標文件規定優先採購正字標記規格產品。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":6,"stem":"招標文件對於優先採購環保產品之敘述，下列何為是？","options":["招標標的僅部分屬環保產品者，仍得於招標文件載明優先採購環保產品。","招標文件明定提供環保標章產品之廠商，始可投標。","適用條約或協定之採購案，仍得優先採購環保產品。","不限定採購具環保標章之產品，但允許於價差8%內優先決標予環保產品廠商。"],"answer":4},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":7,"stem":"關於共同供應契約採購，下列敘述何者錯誤？","options":["訂約機關於共同供應契約約定，各適用機關可自行決定是否利用共同供應契約辦理採購。","機關於招標文件載明共同供應契約每次最高採購量，不另訂定大量訂購金額可洽廠商提供優惠條件之條款。","機關於招標文件載明之共同供應契約預算金額係屬預估，於該契約有效期間內，各機關總訂購金額仍得逾預算數額。","利用共同供應契約訂購前，先查察其他供應來源有無較便宜且符合需要之標的。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":8,"stem":"依採購法規定，下列招標文件規定，何者適法？","options":["同一廠商同時做為各機關採購契約之連帶保證廠商者，以不超過3契約為原則。","機關以統包辦理招標，允許4家以內之廠商共同投標。","優良廠商減收押標金金額，其繳納金額為原定應繳總額之百分之三十。","允許4家以內之廠商投標，應載明不得單獨投標。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":9,"stem":"下列招標文件之規定，何者為是？","options":["開標後發現投標廠商聲明書未加蓋廠商及其負責人印章者，不允許廠商補正。","招標文件規定廠商須使用機關指定之封套投標，否則視為無效標。","投標廠商未攜帶與投標廠商聲明書相符之廠商及負責人印章者，視為放棄減價權利。","得標廠商之押標金於完成簽約並正常履約二個月後退還。"],"answer":1},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":10,"stem":"以下何者非屬機關得於招標文件中規定允許廠商於開標前補正之非契約必要之點之文件？","options":["原招標文件已標示得更改之項目。","參考性質之事項。","列入標價評比之選購項目。","其他於契約成立無影響之事項。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":11,"stem":"下列招標文件之規定，何者尚屬適法？","options":["廠商出席人員不得遲到、早退，開標20分鐘以後不得進場。","投標廠商聲明書未加蓋廠商章者，視為不合格。","投標文件內容有前後不一致或書寫錯誤之情形者，視為不合格。","招標文件規定優良廠商應繳納之押標金、保證金得予減收55%。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":12,"stem":"下列何者須於招標文件明定?","options":["被刊登於政府採購公報之廠商，不得參加投標或作為決標對象或分包廠商之期間。","廠商標價超過底價時，比減價格之次數。","採協商措施者，得納入協商之項目。","政黨及與其具關係企業關係之廠商，不得參與投標。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":13,"stem":"下列何者須於招標文件載明，否則機關不能據以辦理？","options":["逾期違約金之計罰。","辦理部分驗收。","驗收不符時，改正期限之訂定。","減價收受之減價計算方式。"],"answer":1},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":14,"stem":"下列敘述何者正確？","options":["機關辦理採購之標的，如法令已有允許輸入臺灣地區之大陸地區產品，機關尚不得拒絕廠商以之作為投標標的。","臺商於大陸地區投資設立之公司，仍視為我國廠商，得參與我國機關辦理之採購。","依現行相關法令規定，大陸地區廠商不得參與我機關採購。","機關辦理涉及大陸地區財物或勞務之採購，為免爭議，宜於招標文件載明是否允許廠商提供原產地為大陸地區之財物或勞務參與其採購。"],"answer":4},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":15,"stem":"依採購法規定，下列何者為非？","options":["除我國締結之條約或協定另有規定外，機關得視個案性質與實際需要決定是否允許外國廠商參與投標。","機關招標文件規定不允許外國廠商投標，我國廠商供應之財物或勞務原產地非屬我國者，不影響其投標資格。","跨國企業在我國經目的事業主管機關認許在臺營業之分公司，其如參與投標，應視為外國廠商。","大陸地區產品之原產地認定，依進口貨物原產地認定標準。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":16,"stem":"下列投標須知之規定，何者無違反採購法之虞？","options":["以現金繳納押標金之憑據應附於投標文件，否則視為未繳納而為無效標。","廠商「投標標價清單」如經塗改，應加蓋印章，否則視為無效標。","投標文件未使用機關提供之封套，視為無效標。","投標文件之頁數或紙張大小與投標文件規定不符者，視為無效標。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":17,"stem":"有關採購法所稱招標文件，下列敘述何者錯誤？","options":["決標後納為契約文件之一。","機關應據以為審標之依據。","採購法規未明定須於招標文件載明者，均毋需於招標文件中載明。","採購法規定應載明於招標文件者，均須於招標文件中載明。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":18,"stem":"依採購法規定，下列何者正確？","options":["預算金額必須於招標文件及招標公告公開。","未達查核金額之工程採購，仍得於公告招標前辦理招標文件之公開閱覽。","擬依採購法第22條第1項第7款辦理後續增購，為避免相關規定不一致，得將該增購之情形於招標公告載明為詳投標須知第xx點規定。","預計金額必須於招標文件及招標公告公開。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":19,"stem":"下列何者非屬未達公告金額採購之特性？","options":["得免收押標金及保證金。","決標結果得免以書面通知廠商。","得免訂定底價。","免通知上級機關監辦。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":20,"stem":"依採購法規定，下列敘述何者正確？","options":["即使無政府採購條約或協定，外國廠商均可參與我國之政府採購 。","招標文件載明投標廠商須檢附票據交換機構於截止投標日之前一個月內所出具之非拒絕往來戶或最近3年內無銀行退票紀錄證明文件，尚屬適法。","器材採購之招標文件規定得標廠商交貨時應檢附保固證明書，尚屬適法。","招標文件不得規定外國廠商依該國情形提出資格文件有困難者，得敘明其情形或以其所具有之相當資格代之。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":21,"stem":"依採購法規定，下列何者正確？","options":["機關辦理非特殊或巨額採購，其招標文件訂定投標廠商須檢附實績證明，尚屬適法。","機關辦理採購，於招標文件允許廠商共同投標，其共同投標之廠商家數上限為3家，尚不違反採購法。","機關辦理一採購金額為新臺幣50萬元之勞務採購，不得採選擇性招標。","以上皆非。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":22,"stem":"機關辦理採購，應於招標文件中規定廠商對招標文件內容有疑義者，應以書面向招標機關請求釋疑之期限，以下敘述何者正確？","options":["自公告日或邀標日起等標期之二分之一。","自公告日或邀標日起等標期之三分之一。","自公告日或邀標日起等標期之四分之一，且不得少於十日。","自公告日或邀標日起等標期之四分之一，其尾數不足一日者，以一日計。"],"answer":4},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":23,"stem":"依採購法規定，下列招標文件規定何者適法？","options":["差額保證金須於機關通知後3日內繳納 。","投標廠商應符合之資格之一部分，得以分包廠商就其分包部分所具有者代之。","查核金額以上採購，得標廠商須於簽訂契約後10天內繳納履約保證金。","押標金及保證金應由廠商以現金及金融機構簽發之本票或支票為之，其餘概不受理。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":24,"stem":"依採購法規定，下列敘述何者適法？","options":["廠商繳納押標金後未參加投標，所繳納之押標金應予發還。","機關辦理巨額採購，應於招標文件規定廠商之特定資格。","未達公告金額之採購，招標文件得明定原住民廠商免繳納押標金。","招標文件應明定廠商投標文件應書面密封並於騎縫處加蓋大小印章。"],"answer":1},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":25,"stem":"依採購法規定，下列敘述何者適法？","options":["招標文件得明定廠商於「投標前三年承辦各機關之工程曾發生重大職業災害」者不得參與投標。","招標文件應明定允許廠商於開標前補正契約非必要之點之文件。","招標文件得明定廠商應於截止投標期限前將投標文件送達招標機關指定之郵政信箱。","機關辦理藝文採購，招標文件規定免收押標金、保證金。"],"answer":4},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":26,"stem":"依採購法規定，下列敘述何者正確？","options":["採購案是否達查核金額或公告金額係以預算金額認定之。","採議價方式辦理之採購，得免訂定底價，但須於招標文件敘明理由及決標原則。","招標文件未規定廠商報價須包含5%營業稅者，表示廠商之報價應包含5%營業稅。","招標文件規定採電子投標之廠商，其押標金得予減收押標金金額之5%"],"answer":4},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":27,"stem":"依採購法規定，下列敘述何者正確？","options":["招標文件規定最低標廠商如經機關通知有採購法第58條情形，應於開標當場出具願意繳納差額保證金之切結書，尚屬適法 。","一次投標分段開標之採購，招標文件規定投標廠商之內外標封須書名廠商名稱、地址，尚屬適法。","招標文件規定廠商投標文件份數與招標文件規定不符者為無效標，尚屬適法。","招標文件規定開標時廠商須攜帶資格文件正本供查驗，尚屬適法。"],"answer":2},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":28,"stem":"依採購法規定，下列敘述何者正確？","options":["投標須知應載明受理廠商異議、申訴、履約爭議調解之機關名稱，且三者須一致。","未達公告金額之採購，招標文件及公告得規定領標方式限以專人領取。","招標文件規定押標金以現金繳納者，應繳納至指定之收受處所或帳號，否則為不合格標，尚屬適法。","廠商得以現金作為押標金附於投標文件內遞送。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":29,"stem":"機關允許廠商以電子方式領標者應於以下何者中訂明？","options":["招標公告及招標文件。","招標公告。","招標文件。","招標公告及機關之網站公告。"],"answer":1},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":30,"stem":"有關共同投標之採購案件，下列敘述何者正確？","options":["招標文件中未載明允許廠商共同投標者，廠商採共同投標方式投標，機關仍得接受。","共同投標廠商之家數上限，得免於招標文件中載明。","允許廠商共同投標之案件，廠商單獨投標並無不可。","以聯合技師事務所投標者，亦屬共同投標。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":31,"stem":"機關於招標文件規定廠商之投標文件為不合格標之情形，下列何者非屬無效之規定？","options":["未檢附願繳納差額保證金之切結書。","投標文件之編排、字體大小、裝訂方式或份數與招標文件規定不符。","不分段開標之投標文件未依招標文件規定分置資格、規格或價格標封。","未依招標文件規定檢附廠商切結書。"],"answer":4},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":32,"stem":"下列敘述，何者錯誤？","options":["機關辦理評選，得於招標文件規定過半數出席評選委員評定總分未達若干分者，為不合格廠商。","機關得於招標文件載明預算未完成立法程序前，得先辦理保留決標，俟預算通過後始決標生效。","機關得於招標文件要求電子領標廠商，應檢附工程會指定資訊系統之領標電子憑據。","機關辦理公開客觀評選優勝廠商，招標文件如未訂明固定費用或費率，應於議價時提供空白標單供廠商重行報價。"],"answer":4},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":33,"stem":"機關辦理財物採購，依採購法第49條及第93條之1規定公開取得電子報價單，下列敘述何者錯誤？","options":["招標文件規定只允許廠商電子領標、電子報價，不提供現場領標、現場投標。","招標文件規定不允許廠商於開標前補正非契約必要之點之文件。","廠商電子報價後，如發現標價錯誤，得允許廠商撤回更正。","廠商之電子化資料，視同正式文件，免另備書面文件。"],"answer":3},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":34,"stem":"下列何者非屬機關應依採購法第31條第2項第7款規定，就廠商所繳納之押標金不予發還之情形？","options":["廠商有採購法第50條第1項第5款情形。","廠商或其代表人、代理人、受雇人或其他從業人員與機關人員，共同違反採購法第26條、第34條或第37條第1項規定。","廠商或其代表人、代理人、受雇人或其他從業人員與受機關委託提供採購規劃、設計、專案管理或代辦採購廠商之人員，共同實施採購法第89條規定構成要件事實。","廠商有採購法第48條第1項第2款「足以影響採購公正之違法行為者」情形。"],"answer":4},{"chapter":"3","chapterName":"投標須知及招標文件製作","num":35,"stem":"機關於招標文件規定廠商之投標文件為不合格標之情形，下列何者屬有效之規定？","options":["標封封口未蓋騎縫章。","投標文件未逐頁蓋章。","廠商電子領標，投標文件無需檢附電子領標憑據。","分段開標之投標文件，未依規定分置資格、規格或價格標封。"],"answer":4},{"chapter":"6","chapterName":"道德規範及違法處置","num":1,"stem":"A為甲建築師事務所負責人，於99年7月1日自乙市政府建設處(市政府之內部單位)建築工程科離職，嗣後乙市政府於99年12月25日升格為乙直轄市政府，在A離職未滿3年，依採購法第15條第1項規定，甲建築師事務所得參與下列何機關之採購？","options":["原乙市政府建設處改制之乙直轄市政府建設局。","乙直轄市政府所屬公立學校。","升格為直轄市後之乙直轄市政府。","以上皆非。"],"answer":2},{"chapter":"6","chapterName":"道德規範及違法處置","num":2,"stem":"甲廠商之負責人為A機關首長之表弟，下列敘述何者正確？","options":["甲廠商不得參與A機關採購案之投標。","甲廠商得參與A機關採購案之投標，惟A機關首長應迴避。","甲廠商得參與A機關採購案之投標，且A機關首長無須迴避。","甲廠商不得為A機關採購案之分包廠商。"],"answer":3},{"chapter":"6","chapterName":"道德規範及違法處置","num":3,"stem":"某甲於102年1月至107年12月任職於A機關，於108年1月至109年12月任職於B機關，110年1月迄今任職於C民間企業，以下何者為是？","options":["某甲於110年3月得代理廠商向A機關接洽其於105年8月於A機關所任職務有關之事務。","某甲於111年3月皆不得代理廠商向A或B機關接洽任何其於A或B機關所任職務有關之事務。","某甲於111年3月得代理廠商向A機關接洽其於107年8月於A機關所任職務有關之事務。","以上皆非。"],"answer":3},{"chapter":"6","chapterName":"道德規範及違法處置","num":4,"stem":"機關辦理公開程序之採購，如於「投標廠商聲明書」要求廠商聲明其是否屬公職人員利益衝突迴避法第2條所稱公職人員及第3條所規範之關係人，機關於履約過程始發現廠商之聲明與事實不符，機關下列處理方式何者正確？","options":["依採購法第31條規定追繳該廠商押標金。","依採購法第101條第1項規定通知該廠商將刊登政府採購公報。","通知公職人員利益衝突迴避法主管機關法務部。","減價收受。"],"answer":3},{"chapter":"6","chapterName":"道德規範及違法處置","num":5,"stem":"機關辦理採購，如於「投標廠商聲明書」要求廠商聲明其是否屬公職人員利益衝突迴避法第2條所稱公職人員及第3條所規範之關係人，遇有公職人員或關係人參與該公職人員服務機關或受其監督機關之採購，且該採購非屬公職人員利益衝突迴避法第14條第1項但書所定情形者，下列處理方式何者為誤？","options":["開標前發現者，依採購法第50條第1項第1款規定，該廠商所投之標不予開標。","開標後發現者，依採購法第50條第1項第1款規定，不決標予該廠商。","決標予該廠商後發現者，依採購法第50條第2項規定撤銷決標解除契約，並得追償損失。","決標予該廠商後發現者，報公職人員利益衝突迴避法之主管機關核定後免撤銷決標。"],"answer":4},{"chapter":"6","chapterName":"道德規範及違法處置","num":6,"stem":"原於新任首長就職前已得標廠商之負責人為新任首長胞兄，於其胞弟就職後，以下敘述何者正確？","options":["機關應補具相關文件報主管機關核定免除迴避規定之適用。","撤銷該廠商之得標資格。","機關應補具相關文件報上級機關備查。","機關於後續履約管理及驗收等採購事項執行時，新任首長應予迴避。"],"answer":4},{"chapter":"6","chapterName":"道德規範及違法處置","num":7,"stem":"下列何者為採購人員得為之行為？","options":["於機關任職期間同時為廠商所僱用。","要求廠商提供與採購無關之服務。","主動參與公開舉行且邀請一般人參加之餐會。","為免有礙業務執行，於交通不便地區使用廠商提供之交通工具。"],"answer":4},{"chapter":"6","chapterName":"道德規範及違法處置","num":8,"stem":"依採購人員倫理準則規定，採購人員接受價值逾新台幣500元，退還有困難時，於獲贈或知悉起7日內作何處理？","options":["付費收受。","歸公。","轉贈慈善機構。","以上皆是。"],"answer":4},{"chapter":"6","chapterName":"道德規範及違法處置","num":9,"stem":"下列何者非採購人員應遵循者？","options":["努力發現真實，對機關及廠商之權利均應注意維護。","基於公共利益、採購效益或專業判斷之考量，為適當之採購決定。","依據法令，本於良知，公正執行職務，必要時，得接受請託或關說。","不接受與職務或利益有關廠商之餽贈或招待。"],"answer":3},{"chapter":"6","chapterName":"道德規範及違法處置","num":10,"stem":"機關採購專業人員於下列何種情形，喪失其採購專業人員資格？","options":["辭職後5年內回任機關採購職務。","調任其他機關辦理採購。","辦理採購業務違反法令情節重大而受申誡懲戒處分者。","以上皆非。"],"answer":4},{"chapter":"6","chapterName":"道德規範及違法處置","num":11,"stem":"下列有關採購評選委員會委員之規定，下列何者為非？","options":["委員對於所知悉之招標資訊，應予保密。","委員應公正執行職務，不為及不受任何請託或關說。","委員如因不可抗力因素無法出席評選會議，得在機關同意下委由代理人出席。","委員不得有採購人員倫理準則第7條規定之行為。"],"answer":3},{"chapter":"6","chapterName":"道德規範及違法處置","num":12,"stem":"下列何者屬採購人員倫理準則第2條所稱採購人員？","options":["辦理開標之人員。","訂定招標文件之人員。","處理履約爭議之人員。","以上皆是。"],"answer":4},{"chapter":"6","chapterName":"道德規範及違法處置","num":13,"stem":"以下何者有誤？","options":["發現採購人員有違反法令之情形，其主管知情不予處置者，應視情節輕重，依法懲處。","驗收時，因交通不便，而使用廠商提供之交通工具及便當，但付費予廠商。","辦理新臺幣15萬元以下之採購，未通知主(會)計及有關單位人員辦理監辦。","為符合社會禮儀或習俗，不依法令規定辦理採購。"],"answer":4},{"chapter":"6","chapterName":"道德規範及違法處置","num":14,"stem":"下列敘述何者正確？","options":["採購人員只要接受新臺幣500元以下之饋贈或招待，尚屬合宜。","機關首長非依法規兼任某財團法人之董事，如係依政府採購法以公告程序辦理之採購，該財團法人可以參與該機關首長所任職機關之採購。","機關首長尚非採購人員倫理準則所稱採購人員。","採購人員如有違反法令情形，依採購法第7章罰則論處。"],"answer":2},{"chapter":"6","chapterName":"道德規範及違法處置","num":15,"stem":"下列敘述何者正確？","options":["機關預算遭挪用致無款項及時支付廠商之情形，非屬採購人員倫理準則適用範圍。","接受機關委託之專案管理廠商之人員，辦理契約所定事項，因其非屬機關人員，爰非屬採購人員倫理準則規範範圍。",")負責政府採購案驗收人員與主辦人員如係夫妻關係，應予迴避。","以上皆非。"],"answer":3},{"chapter":"6","chapterName":"道德規範及違法處置","num":16,"stem":"下列採購人員之行為，何者無違反採購人員倫理準則之虞？","options":["於機關場所張貼旅行社廣告海報。","為提昇採購品質，對於未得標廠商之企劃書內容，提供予得標廠商參考。","因政策變更，於等標期間取消採購。","公開招標採分段開標，於開價格標前訂定底價。"],"answer":3},{"chapter":"6","chapterName":"道德規範及違法處置","num":17,"stem":"採購人員接受與職務或利益有關廠商之廣告物價值逾500元，退還有困難者，得於幾日內付費收受、歸公或轉贈慈善機構？","options":["3日。","5日。","7日。","10日。"],"answer":3},{"chapter":"6","chapterName":"道德規範及違法處置","num":18,"stem":"下列何者正確不違採購法令？","options":["於機關辦公室懸掛廠商廣告物。","採購人員要求得標廠商僱用採購人員親友。","採購人員下班後由得標廠商僱用。","採購人員不得從事足以影響採購人員尊嚴之活動。"],"answer":4},{"chapter":"6","chapterName":"道德規範及違法處置","num":19,"stem":"在非主動求取且係偶發之情形下，採購人員不接受與職務或利益有關廠商之餽贈或招待，反不符合社會禮儀或習俗者，得予接受。但下列何者為非可接受之範圍?","options":["價值在新臺幣500元以下之饋贈或飲食招待。","利用廠商免費提供場所辦理機關餐會活動。","基於家庭或私人情誼所為者。","公開舉行且邀請一般人參加之餐會。"],"answer":2},{"chapter":"6","chapterName":"道德規範及違法處置","num":20,"stem":"與職務或利益有關廠商餽贈之禮物，其價值在新臺幣多少元以下，如不接受反不符合社會禮儀或習俗者，得予接受？","options":["300元。","500元。","1000元。","2000元。"],"answer":2},{"chapter":"6","chapterName":"道德規範及違法處置","num":21,"stem":"依採購人員倫理準則規定，下列何者為採購人員應有之行為？","options":["努力發現真實，對機關及廠商之權利均注意維護。","公開招標之第3次招標仍僅2家投標不予開標。","重視廠商請託或關說。","參與廠商舉行且邀請多人參加之餐會。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":1,"stem":"「廠商請求機關展延工期不成故申請調解，並繳納調解費新臺幣(下同)10萬元，嗣於第1次調解期日之次日起10日內以書面撤回調解，則應退還調解費多少元？","options":["0元。","5萬元。","9萬5,000元。","10萬元。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":2,"stem":"某法人接受補助辦理採購(非藝文採購)，採購金額為新臺幣(下同)200萬元，臺中市政府補助50萬元，內政部補助100萬元，且由臺中市政府及內政部共同辦理監督，廠商就此採購案申訴時，應向下列哪一個採購申訴審議委員會申訴？","options":["行政院公共工程委員會採購申訴審議委員會。","臺中市政府採購申訴審議委員會。","臺北市政府採購申訴審議委員會。","以上皆是。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":3,"stem":"依政府採購法，下列何者有誤：","options":["申訴審議判斷指明原採購行為違反法令者，招標機關應自收受審議判斷書之次日起20日內另為適法之處置。","申訴審議判斷指明原採購行為違反法令者，廠商得向招標機關請求償付其準備投標、異議及申訴所支出之必要費用。","申訴提出後，廠商得於審議判斷送達前撤回之。","申訴經撤回後，得再行提出同一之申訴。"],"answer":4},{"chapter":"7","chapterName":"爭議處理","num":4,"stem":"主管機關及直轄市、縣(市)政府為處理中央及地方機關採購之廠商申訴及機關與廠商間之履約爭議調解，分別設採購申訴審議委員會；置委員至多：","options":["20人。","25人。","30人。","35人。"],"answer":4},{"chapter":"7","chapterName":"爭議處理","num":5,"stem":"廠商對於機關辦理之採購提出異議逾法定期限時，機關對於異議之處置，何者為是？","options":["應不予受理。","應為實體審查。","移受理申訴之機關。","移上級機關。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":6,"stem":"廠商對於採購之過程、結果提出異議者，為接獲機關通知或機關公告之次日起：","options":["15日。","20日。","7日。","10日。"],"answer":4},{"chapter":"7","chapterName":"爭議處理","num":7,"stem":"申訴廠商於第1次預審會議期日前撤回採購申訴者，所繳審議費？","options":["不予退還。","無息退還二分之一。","無息退還三分之一。","無息退還全部。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":8,"stem":"就採購履約爭議調解，下列何者為正確？","options":["調解程序以不公開為原則。","調解過程中，採購程序應暫停。","機關得拒絕廠商申請之調解。","機關申請調解，無需經廠商同意。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":9,"stem":"下列何者非採購調解事件應不予受理之事由：","options":["當事人不適格。","已提起仲裁、申請調解或民事訴訟。","他造當事人拒絕繳納調解費。","非屬政府採購事件。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":10,"stem":"廠商與臺北市政府工務局自辦之採購案件產生採購履約爭議時，得向：","options":["臺北市政府採購申訴審議委員會申請調解。","行政院公共工程委員會採購申訴審議委員會申訴。","臺北市政府採購申訴審議委員會申訴。","行政院公共工程委員會採購申訴審議委員會申請調解。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":11,"stem":"機關辦理採購，下列何者為非？","options":["申訴事件，在為實體審查前，應先繳納審議費用。","關於招標文件之申訴事件，未投標之廠商亦得提出。","申訴事件，應先為實體審查，其無不受理之情形者，再為程序審查。","廠商誤向非管轄之機關申訴者，以該機關收受之日，視為提起申訴之日。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":12,"stem":"採購申訴事件之代理人就其受委任事件，有為一切申訴行為之權。但下列何事項，非受特別委任，不得為之：","options":["撰寫申訴書。","撤回申訴。","出席預審會議。","代收審議判斷書。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":13,"stem":"廠商或機關向採購申訴審議委員會申請履約爭議調解時，其調解標的金額為新臺幣(下同)5億元以上者，應繳納調解費：","options":["10萬元。","20萬元。","35萬元。","100萬元。"],"answer":4},{"chapter":"7","chapterName":"爭議處理","num":14,"stem":"目前臺東縣政府未設採購申訴審議委員會，對於臺東縣政府所屬之機關、學校自辦之採購如發生爭議，臺東縣政府得如何處理？","options":["委請臺北市政府採購申訴審議委員會處理。","委請政府採購法主管機關所設之採購申訴審議委員會處理。","委請高雄市政府採購申訴審議委員會處理。","由臺東縣議會處理。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":15,"stem":"機關申請調解，廠商不同意調解時，採購申訴審議委員會應如何處理？","options":["不受理。","駁回。","視同未提出申請。","請其撤回。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":16,"stem":"申訴審議委員會就調解事件進行程序審查時，如發現申請人委託律師提出調解而未檢具委任狀時，應：","options":["逕不予受理。","駁回。","命其補正。","退件。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":17,"stem":"採購申訴審議委員會之決議，應有多少以上委員出席，出席委員過半數同意行之？","options":["四分之一。","三分之一。","二分之一。","三分之二。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":18,"stem":"政府採購之調解應自收受調解申請書之次日起多久期間內完成調解程序。但經雙方同意延長者，得延長之？","options":["4個月。","3個月。","2個月。","6個月。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":19,"stem":"對於政府採購，下列何者敘述為不正確？","options":["採購申訴得僅就書面審議。","申訴提出後，廠商得於審議判斷送達前撤回。","調解屬廠商申請者，機關不得拒絕。","廠商對於驗收爭議得提出異議、申訴。"],"answer":4},{"chapter":"7","chapterName":"爭議處理","num":20,"stem":"依政府採購法調解成立，其調解成立書性質：","options":["視同訴願決定。","與確定判決有同一效力。","不具強制執行名義。","視同法院判決。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":21,"stem":"機關與廠商因採購履約爭議未能達成協議者，得向採購申訴審議委員會申請：","options":["申訴。","仲裁。","調解。","訴訟。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":22,"stem":"有關政府採購法第101條之申訴案，廠商不服申訴審議判斷之結果者，得於審議判斷書送達之次日起2個月內，向：","options":["行政法院提起行政訴訟。","所轄之地方法院提起民事訴訟。","所轄之高等法院提起民事訴訟。","招標機關之上級機關提起訴願。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":23,"stem":"廠商對於招標文件異議之處理結果不服，或招標機關逾規定期限不為處理者，得向採購申訴審議委員會申訴之門檻為：","options":["公告金額以上。","查核金額以上。","不論金額大小。","公告金額十分之一以上。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":24,"stem":"政府採購申訴案件經審議判斷指明原採購行為違反法令者，廠商得向招標機關請求償付？","options":["準備投標、異議及申訴所支出之必要費用。","所失利益。","押標金。","另行訴訟之費用。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":25,"stem":"採購申訴審議委員會委員之人數依法為？","options":["5人至17人。","7人至35人。","沒有明文規定。","以上皆是。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":26,"stem":"依法不得設立採購申訴審議委員會之機關為：","options":["政府採購法之主管機關。","直轄市政府。","縣(市)政府。","鄉公所。"],"answer":4},{"chapter":"7","chapterName":"爭議處理","num":27,"stem":"政府採購申訴案件每一案件之收費(新臺幣)為？","options":["5萬元。","3萬元。","依個案認定。","不用收費。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":28,"stem":"廠商於等標期內向招標機關提出異議，如仍不服該異議處理結果，應於接獲招標機關異議處理結果幾日內，向採購申訴審議委員會提出申訴：","options":["15天。","20天。","10天。","沒有限制。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":29,"stem":"有關政府採購之申訴，下列何者為非？","options":["自收受異議處理結果之次日起15日內提出。","應具申訴書，並由申訴廠商簽名或蓋章。","申訴審議判斷，視同訴願決定。","申訴之提起，以申訴廠商寄出申訴書之日為準。"],"answer":4},{"chapter":"7","chapterName":"爭議處理","num":30,"stem":"政府採購之異議，招標機關應自收受廠商異議之次日起幾日內為適當之處理？","options":["10日。","15日。","20日。","1個月。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":31,"stem":"政府採購法第75條及76條規定之異議、申訴程序，係在處理何種爭議：","options":["招標、審標、決標。","履約。","驗收。","保固 。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":32,"stem":"政府採購履約爭議調解程序，不適用廠商與機關何種爭議(下列何者為非)：","options":["招標、審標、決標。","履約。","驗收。","保固。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":33,"stem":"廠商與機關之間因採購履約產生爭議，得選用下列何種方式解決爭議？","options":["訴訟。","仲裁。","向採購申訴審議委員會申請調解。","以上皆是。"],"answer":4},{"chapter":"7","chapterName":"爭議處理","num":34,"stem":"採購申訴審議判斷之效力？","options":["視同確定判決。","視同訴願決定。","視同仲裁判斷。","視同調解成立書。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":35,"stem":"廠商誤向該管採購申訴審議委員會以外之機關申訴者，收受申訴書之機關應於收受之次日起幾日內將申訴書移送於該管採購申訴審議委員會，並通知申訴廠商？","options":["5日。","7日。","3日。","10日。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":36,"stem":"依政府採購法，下列何者有誤：","options":["調解事件應自收受調解申請書之次日起4個月內完成調解程序。但經雙方同意延長者，得延長之。","對於政府採購法第102條規定之異議處理結果不服者，應申請調解。","已提起仲裁且在進行中之爭議不得向採購申訴審議委員會申請調解。","已提起訴訟且在進行中之爭議不得向採購申訴審議委員會申請調解。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":37,"stem":"依政府採購法，下列何者有誤？","options":["調解案之他造當事人應自收受調解申請書副本之次日起15日內，以書面向採購申訴審議委員會陳述意見，並副知申請人。","調解，以公開為原則。","就調解事件有法律上利害關係之第三人，調解委員得依職權審酌通知其參加調解程序。","申訴會於調解時，得囑託具專門知識經驗之機關、學校、團體或人員鑑定，並得邀請學者或專家諮詢。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":38,"stem":"依政府採購法，下列何者正確：","options":["異議逾越法定期間者，應不予受理，並以書面通知提出異議之廠商。","異議逾越法定期間者，仍得予受理。","廠商誤向非管轄之機關提出異議者，該收文機關亦得就廠商之異議加以處理。","機關處理異議，不應給予異議廠商陳述意見之機會。"],"answer":1},{"chapter":"7","chapterName":"爭議處理","num":39,"stem":"依政府採購法，下列何者有誤：","options":["廠商提出申訴時，應繳納審議費，每一申訴事件為新臺幣3萬元。","招標機關自行依申訴廠商之請求，撤銷或變更其處理結果者，採購申訴審議委員會應作成申訴不受理之決議。","廠商提出申訴但拒繳納審議費，採購申訴審議委員會仍得受理。","申訴事件經審查無不受理之情形者，由採購申訴審議委員會主任委員指定委員1人至3人為預審委員，進行實體審查。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":40,"stem":"廠商申請調解，已繳納調解費新臺幣(下同)10萬元，於通知調解期日後始發現有當事人不適格之情事，應退還調解費多少元？","options":["0元。","5萬元。","9萬5,000元。","10萬元。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":41,"stem":"高雄市某漁會接受內政部補助辦理採購(非藝文採購)，補助金額為新臺幣(下同)150萬元，採購金額為200萬元，投標廠商不服決標結果，可向下列哪一個採購申訴審議委員會申訴？","options":["高雄市政府採購申訴審議委員會。","行政院農業委員會設置之採購申訴審議委員會。","行政院公共工程委員會採購申訴審議委員會。","以上皆非。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":42,"stem":"依政府採購法，下列何者有誤：","options":["招標機關處理異議為不受理之決定時，仍得評估其事由，於認其異議有理由時，自行撤銷或變更原處理結果或暫停採購程序之進行。","政府採購法第75條第1項第3款所定期限之計算，其經機關通知及公告者，廠商接獲通知之日與機關公告之日不同時，以公告之日起算。","異議不合規定，但其情形可補正者，應定期間命其補正；逾期不補正者，不予受理。","機關依政府採購法第102條規定將異議處理結果以書面通知提出異議之廠商時，應附記廠商如對該處理結果不服，得於收受異議處理結果之次日起15日內，以書面向採購申訴審議委員會提出申訴。"],"answer":2},{"chapter":"7","chapterName":"爭議處理","num":43,"stem":"廠商或機關向採購申訴審議委員會申請履約爭議調解時，其調解費為新臺幣(下同)100萬，於第1次調解期日之次日起10日內撤回調解，應退還調解費為：","options":["20萬元。","30萬元。","50萬元。","80萬元。"],"answer":4},{"chapter":"7","chapterName":"爭議處理","num":44,"stem":"政府採購申訴案件經審議判斷指明原採購行為違反法令者，招標機關應自收受審議判斷書之次日起幾日內另為適法之處置：","options":["10日。","15日。","20日。","30日。"],"answer":3},{"chapter":"7","chapterName":"爭議處理","num":45,"stem":"廠商對於招標機關依政府採購法第31條規定不予發還或追繳押標金爭議，得向採購申訴審議委員會申訴之門檻為：","options":["公告金額以上。","查核金額以上。","不論金額大小。","公告金額十分之一以上。"],"answer":3}];
+const TOTAL = QUESTIONS.length;            // 完整題庫：顯示全部題目，不再抽題
+const LETTER = ["A","B","C","D"];
+
+let state = { phase:"start", shuffle:true, qshuffle:false, deck:[], idx:0 };
+
+const app = document.getElementById("app");
+document.getElementById("bank-total").textContent = QUESTIONS.length;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function chapMeta(no){ return CHAPTERS.find(c=>c.no===no); }
+function code(q){ return q.chapter + "-" + q.chapterName + "-" + q.num; }
+
+function buildDeck(){
+  // 完整題庫：納入全部題目。預設依章節順序、再依題號排序，方便逐題複習；
+  // 開啟「隨機題目順序」時才打散。選項順序則依「隨機調換選項順序」開關決定，文字一字不變。
+  const orderIdx = {}; CHAPTERS.forEach((c,i)=>orderIdx[c.no]=i);
+  let picked = QUESTIONS.slice().sort((a,b)=>
+    (orderIdx[a.chapter]-orderIdx[b.chapter]) || (a.num-b.num));
+  if(state.qshuffle) picked = shuffle(picked);
+  return picked.map(q=>{
+    const order = state.shuffle ? shuffle([0,1,2,3]) : [0,1,2,3];
+    return { q, order, correctDisplay: order.indexOf(q.answer-1), chosen:null };
+  });
+}
+
+/* ---------------- START ---------------- */
+function renderStart(){
+  state.phase = "start";
+  const rows = CHAPTERS.map(c=>`
+    <div class="compo-row">
+      <span class="compo-no">第${c.no}章</span>
+      <span class="compo-name">${esc(c.name)}</span>
+      <span class="compo-dots"></span>
+      <span class="compo-q"><b>${c.count}</b>題</span>
+    </div>`).join("");
+  app.innerHTML = `
+    <div class="card card-pad">
+      <p class="lede">本練習<b>完整收錄全部 ${TOTAL} 題</b>，依章節順序逐題作答。作答後立即顯示對錯，答錯時會在正解選項標示紅色記號；全部作答完畢後產生只列錯題的測驗報告。</p>
+      <div class="compo">
+        ${rows}
+        <div class="compo-total"><span>題目總數</span><span class="big">${TOTAL}</span></div>
+      </div>
+      <label class="opt-toggle">
+        <span class="t-text">隨機調換選項順序
+          <span class="t-sub">模擬考場的選項重排，選項文字一字不變</span>
+        </span>
+        <span class="switch"><input type="checkbox" id="sw-shuffle" ${state.shuffle?"checked":""}><span class="slider"></span></span>
+      </label>
+      <label class="opt-toggle">
+        <span class="t-text">隨機題目順序
+          <span class="t-sub">關閉時依章節與題號順序作答，方便逐題複習</span>
+        </span>
+        <span class="switch"><input type="checkbox" id="sw-qshuffle" ${state.qshuffle?"checked":""}><span class="slider"></span></span>
+      </label>
+      <button class="btn btn-primary btn-block" id="btn-start">開始練習</button>
+    </div>`;
+  document.getElementById("sw-shuffle").addEventListener("change", e=>{ state.shuffle = e.target.checked; });
+  document.getElementById("sw-qshuffle").addEventListener("change", e=>{ state.qshuffle = e.target.checked; });
+  document.getElementById("btn-start").addEventListener("click", ()=>{
+    state.deck = buildDeck(); state.idx = 0; renderQuiz(); window.scrollTo(0,0);
+  });
+}
+
+/* ---------------- QUIZ ---------------- */
+function renderQuiz(){
+  state.phase = "quiz";
+  const item = state.deck[state.idx];
+  const q = item.q, answered = item.chosen !== null;
+  const meta = chapMeta(q.chapter);
+  const pct = Math.round((state.idx)/TOTAL*100);
+
+  const opts = item.order.map((origIdx, d)=>{
+    const text = esc(q.options[origIdx]);
+    let cls = "opt", flag = "";
+    if(answered){
+      const isAns = d === item.correctDisplay;
+      const isChosen = d === item.chosen;
+      if(isChosen && isAns) cls += " is-chosen-correct";
+      else if(isChosen && !isAns) cls += " is-chosen-wrong";
+      else if(isAns){ cls += " is-answer"; flag = `<span class="ans-flag">正解</span>`; }
+      else cls += " is-dim";
+    }
+    return `<button class="${cls}" ${answered?"disabled":""} data-d="${d}">
+        <span class="mk">${LETTER[d]}</span><span class="tx">${text}</span>${flag}
+      </button>`;
+  }).join("");
+
+  let verdict = "", nextBtn = "";
+  if(answered){
+    const ok = item.chosen === item.correctDisplay;
+    verdict = ok
+      ? `<div class="verdict ok"><span class="dot">●</span>答對</div>`
+      : `<div class="verdict no"><span class="dot">●</span>答錯 · 正解為 ${LETTER[item.correctDisplay]}</div>`;
+    const last = state.idx === state.deck.length-1;
+    nextBtn = `<button class="btn btn-primary btn-block" id="btn-next">${last?"查看測驗報告":"下一題"}</button>`;
+  }
+
+  app.innerHTML = `
+    <div class="qtop">
+      <span class="count">第 <b>${state.idx+1}</b> / ${TOTAL} 題</span>
+      <button class="quit" id="btn-quit">結束並返回</button>
+    </div>
+    <div class="bar"><i style="width:${pct}%"></i></div>
+    <div class="card card-pad">
+      <div class="qhead">
+        <span class="qbadge">第 ${q.num} 題</span>
+        <span class="qtag">${esc(meta.name)}</span>
+        <span class="qref">第 ${q.chapter} 章</span>
+      </div>
+      <p class="stem">${esc(q.stem)}</p>
+      <div class="opts">${opts}</div>
+      ${verdict}
+      ${nextBtn}
+    </div>`;
+
+  if(!answered){
+    app.querySelectorAll(".opt").forEach(b=>{
+      b.addEventListener("click", ()=>{ item.chosen = +b.dataset.d; renderQuiz(); });
+    });
+  } else {
+    document.getElementById("btn-next").addEventListener("click", ()=>{
+      if(state.idx === state.deck.length-1){ renderReport(); }
+      else { state.idx++; renderQuiz(); }
+      window.scrollTo(0,0);
+    });
+  }
+  document.getElementById("btn-quit").addEventListener("click", ()=>{
+    if(confirm("確定要結束本次練習並返回首頁嗎？目前作答將不會保留。")) renderStart();
+  });
+}
+
+/* keyboard: A-D / 1-4 to answer, Enter / → for next */
+document.addEventListener("keydown", e=>{
+  if(state.phase !== "quiz") return;
+  const item = state.deck[state.idx];
+  if(item.chosen === null){
+    let d = -1;
+    if(/^[1-4]$/.test(e.key)) d = +e.key-1;
+    else { const i = ["a","b","c","d"].indexOf(e.key.toLowerCase()); if(i>=0) d=i; }
+    if(d>=0){ item.chosen = d; renderQuiz(); e.preventDefault(); }
+  } else if(e.key==="Enter" || e.key==="ArrowRight"){
+    const btn = document.getElementById("btn-next"); if(btn){ btn.click(); e.preventDefault(); }
+  }
+});
+
+/* ---------------- REPORT ---------------- */
+function renderReport(){
+  state.phase = "report";
+  const wrong = state.deck.filter(it=> it.chosen !== it.correctDisplay);
+  const correctCount = state.deck.length - wrong.length;
+  const pct = Math.round(correctCount/state.deck.length*100);
+
+  // sort wrong by chapter order then question number
+  const order = {}; CHAPTERS.forEach((c,i)=>order[c.no]=i);
+  wrong.sort((a,b)=> (order[a.q.chapter]-order[b.q.chapter]) || (a.q.num-b.q.num));
+
+  // donut ring
+  const R=48, C=2*Math.PI*R, off=C*(1-pct/100);
+  const ringColor = pct>=80 ? "var(--correct)" : pct>=60 ? "#c79a2e" : "var(--seal)";
+  const ring = `<svg class="ring" viewBox="0 0 108 108">
+      <circle cx="54" cy="54" r="${R}" fill="none" stroke="#e3dfd2" stroke-width="9"/>
+      <circle cx="54" cy="54" r="${R}" fill="none" stroke="${ringColor}" stroke-width="9" stroke-linecap="round"
+        stroke-dasharray="${C}" stroke-dashoffset="${off}" transform="rotate(-90 54 54)"/>
+    </svg>`;
+
+  let msg = pct>=90 ? "表現優異，繼續保持。"
+          : pct>=80 ? "穩定及格，再加強錯題即可。"
+          : pct>=60 ? "接近及格，把下列章節再複習一遍。"
+          : "再多練幾回，針對錯題章節加強。";
+
+  let body;
+  if(wrong.length === 0){
+    body = `<div class="allright"><div class="big">全部答對</div><div class="sub">${TOTAL} 題全數正確，沒有需要複習的題目。</div></div>`;
+  } else {
+    const codes = wrong.map(it=>`<span class="code">${esc(code(it.q))}</span>`).join("");
+    const plain = wrong.map(it=> code(it.q)).join("  ");
+    const review = wrong.map(it=>{
+      const q = it.q;
+      const lines = it.order.map((origIdx,d)=>{
+        const t = esc(q.options[origIdx]);
+        const isAns = d===it.correctDisplay, isChosen = d===it.chosen;
+        let cls="rev-opt", pill="";
+        if(isAns){ cls+=" r-correct"; pill=`<span class="pill">正解</span>`; }
+        else if(isChosen){ cls+=" r-wrong"; pill=`<span class="pill">你選的</span>`; }
+        return `<div class="${cls}"><span class="lab">${LETTER[d]}</span><span>${t}</span>${pill}</div>`;
+      }).join("");
+      return `<div class="rev-item">
+          <div class="rev-code">${esc(code(q))}</div>
+          <p class="rev-q">${esc(q.stem)}</p>
+          ${lines}
+        </div>`;
+    }).join("");
+
+    body = `
+      <div class="sec-title">答錯題目（${wrong.length}）</div>
+      <div class="codes">${codes}</div>
+      <div class="copy-row">
+        <button class="btn-copy" id="btn-copy" data-plain="${esc(plain)}">複製錯題清單</button>
+        <span class="copy-hint">格式：章節-章節名稱-題號</span>
+      </div>
+      <div class="sec-title">錯題檢討</div>
+      <details class="review">
+        <summary><span>展開逐題檢視正解（${wrong.length} 題）</span><span class="chev">▶</span></summary>
+        <div class="rev-body">${review}</div>
+      </details>`;
+  }
+
+  app.innerHTML = `
+    <div class="card card-pad">
+      <div class="score">
+        ${ring}
+        <div class="score-meta">
+          <div class="pct" style="color:${ringColor}">${pct}<span style="font-size:20px">%</span></div>
+          <div class="frac">答對 <b>${correctCount}</b> / ${state.deck.length} 題</div>
+        </div>
+      </div>
+      <p class="verdict-line">${msg}</p>
+      ${body}
+      <div class="btn-row">
+        <button class="btn btn-ghost" id="btn-home">回首頁</button>
+        <button class="btn btn-primary" id="btn-again">重新作答</button>
+      </div>
+    </div>`;
+
+  const cp = document.getElementById("btn-copy");
+  if(cp){
+    cp.addEventListener("click", ()=>{
+      const txt = cp.dataset.plain;
+      const done = ()=>{ cp.textContent="已複製 ✓"; setTimeout(()=>cp.textContent="複製錯題清單",1600); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt,done));
+      } else fallbackCopy(txt,done);
+    });
+  }
+  document.getElementById("btn-home").addEventListener("click", ()=>{ renderStart(); window.scrollTo(0,0); });
+  document.getElementById("btn-again").addEventListener("click", ()=>{
+    state.deck = buildDeck(); state.idx = 0; renderQuiz(); window.scrollTo(0,0);
+  });
+}
+function fallbackCopy(txt, done){
+  const ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0";
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand("copy"); done(); }catch(e){} 
+  document.body.removeChild(ta);
+}
+
+renderStart();
+</script>
+</body>
+</html>
